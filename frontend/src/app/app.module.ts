@@ -8,6 +8,10 @@ import {FormsModule} from '@angular/forms';
 import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppComponent} from './app.component';
+import { NgxSelectModule } from 'ngx-select-ex';
 
 export function tokenGetter() {
   return localStorage.getItem( 'access_token');
@@ -21,6 +25,7 @@ export function tokenGetter() {
   ],
   imports: [
     BrowserModule,
+    NgxSelectModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
