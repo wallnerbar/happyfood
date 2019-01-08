@@ -3,10 +3,7 @@ package swengs.fooddb.model;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -22,6 +19,10 @@ public class User {
     private String username;
     private String password;
     private boolean admin;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userProfile_id")
+    private UserProfile profile;
 
     public boolean isAdmin() {
         return admin;
@@ -45,6 +46,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public UserProfile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(UserProfile profile) {
+        this.profile = profile;
     }
 
     @Override
