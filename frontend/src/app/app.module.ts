@@ -1,6 +1,3 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -10,8 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {AppComponent} from './app.component';
 import { NgxSelectModule } from 'ngx-select-ex';
+import { TestListComponent } from './test-list/test-list.component';
 
 export function tokenGetter() {
   return localStorage.getItem( 'access_token');
@@ -21,7 +18,8 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    TestListComponent
   ],
   imports: [
     BrowserModule,

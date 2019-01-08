@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
-
+import {Component, OnInit} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Router} from '@angular/router';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -9,9 +10,23 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  user: any;
 
-  ngOnInit() {
+  constructor(private userService: UserService, private http: HttpClient, private router: Router) {
   }
 
+  ngOnInit() {
+    this.user = {
+      username: '',
+      password: ''
+    };
+  }
+
+  login() {
+    this.userService.login(this.user)
+      .subscribe((res: any) => {
+      }, (error) => {
+        alert('wrong username or password');
+      });
+  }
 }
