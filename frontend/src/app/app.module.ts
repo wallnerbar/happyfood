@@ -11,6 +11,8 @@ import { NgxSelectModule } from 'ngx-select-ex';
 import { TestListComponent } from './test-list/test-list.component';
 import {FileUploadModule, FileUploader} from 'ng2-file-upload';
 import {MediainputComponent} from './mediainput/mediainput.component';
+import { ProfileListComponent } from './profile-list/profile-list.component';
+import { ProfileFormComponent } from './profile-form/profile-form.component';
 
 export function tokenGetter() {
   return localStorage.getItem( 'access_token');
@@ -22,7 +24,9 @@ export function tokenGetter() {
     LoginComponent,
     LogoutComponent,
     TestListComponent,
-    MediainputComponent
+    MediainputComponent,
+    ProfileListComponent,
+    ProfileFormComponent
   ],
   imports: [
     BrowserModule,
