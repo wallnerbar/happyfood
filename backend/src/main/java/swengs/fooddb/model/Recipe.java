@@ -43,6 +43,27 @@ public class Recipe {
     @JoinColumn(name = "foodImage_id")
     private FoodImage foodImage;
 
+    @ManyToMany
+    @JoinTable(name = "ingredients_recipe",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "ingredients_id")
+    )
+    private Set<Ingredients> ingredients;
+
+    @ManyToMany
+    @JoinTable(name = "user_recipe",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private Set<User> users;
+
+    @ManyToMany
+    @JoinTable(name = "user_favorites_recipe",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private Set<User> favorites;
+
     public Recipe() {
     }
 
@@ -116,6 +137,31 @@ public class Recipe {
         this.foodImage = foodImage;
     }
 
+    public Set<Ingredients> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredients> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+    public Set<User> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(Set<User> favorites) {
+        this.favorites = favorites;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -142,4 +188,5 @@ public class Recipe {
                 ", version=" + version +
                 '}';
     }
+
 }

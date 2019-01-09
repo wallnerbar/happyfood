@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 @RepositoryRestResource
-public interface FoodImageRepository extends PagingAndSortingRepository<User, Long>, JpaRepository<User, Long>, CrudRepository<User, Long> {
+public interface FoodImageRepository extends PagingAndSortingRepository<FoodImage, Long>, JpaRepository<FoodImage, Long>, CrudRepository<FoodImage, Long> {
 
 
 }

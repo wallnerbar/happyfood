@@ -26,6 +26,13 @@ public class Ingredients {
     @JsonIgnore
     private long version;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "ingredients_recipe",
+            joinColumns = @JoinColumn(name = "ingredients_id"),
+            inverseJoinColumns = @JoinColumn(name = "recipe_id")
+    )
+    private Set<Recipe> recipes;
+
     public Ingredients() {
     }
 
@@ -47,6 +54,14 @@ public class Ingredients {
 
     public void setIngredientName(String ingredientName) {
         this.ingredientName = ingredientName;
+    }
+
+    public Set<Recipe> getRecipes() {
+        return recipes;
+    }
+
+    public void setRecipes(Set<Recipe> recipes) {
+        this.recipes = recipes;
     }
 
     @Override

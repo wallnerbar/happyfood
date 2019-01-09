@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 @RepositoryRestResource
-public interface IngredientsRepository extends PagingAndSortingRepository<User, Long>, JpaRepository<User, Long>, CrudRepository<User, Long> {
+public interface IngredientsRepository extends PagingAndSortingRepository<Ingredients, Long>, JpaRepository<Ingredients, Long>, CrudRepository<Ingredients, Long> {
 
 
 }

@@ -9,6 +9,8 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import { NgxSelectModule } from 'ngx-select-ex';
 import { TestListComponent } from './test-list/test-list.component';
+import {FileUploadModule, FileUploader} from 'ng2-file-upload';
+import {MediainputComponent} from './mediainput/mediainput.component';
 
 export function tokenGetter() {
   return localStorage.getItem( 'access_token');
@@ -19,7 +21,8 @@ export function tokenGetter() {
     AppComponent,
     LoginComponent,
     LogoutComponent,
-    TestListComponent
+    TestListComponent,
+    MediainputComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,7 @@ export function tokenGetter() {
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    FileUploadModule,
     JwtModule.forRoot( {
       config: {
         tokenGetter: tokenGetter,

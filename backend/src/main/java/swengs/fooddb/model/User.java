@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @JsonIdentityInfo(
@@ -23,6 +24,20 @@ public class User {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userProfile_id")
     private UserProfile profile;
+
+    @ManyToMany
+    @JoinTable(name = "user_recipe",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "recipe_id")
+    )
+    private Set<Recipe> recipes;
+
+    @ManyToMany
+    @JoinTable(name = "user_favorites_recipe",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "recipe_id")
+    )
+    private Set<Recipe> favorites;
 
     public boolean isAdmin() {
         return admin;
@@ -56,6 +71,22 @@ public class User {
         this.profile = profile;
     }
 
+    public Set<Recipe> getRecipes() {
+        return recipes;
+    }
+
+    public void setRecipes(Set<Recipe> recipes) {
+        this.recipes = recipes;
+    }
+
+    public Set<Recipe> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(Set<Recipe> favorites) {
+        this.favorites = favorites;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -68,5 +99,16 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(username, password);
+    }
+
+    public UserProfile getUserProfile() {
+        return profile;
+    }
+
+    public void setUserProfile(UserProfile profile) {
+    }
+
+    public Long getId() {
+        return id;
     }
 }
