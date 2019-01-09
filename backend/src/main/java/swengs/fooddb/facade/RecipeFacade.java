@@ -32,6 +32,7 @@ public class RecipeFacade {
         dto.setCookingTime(entity.getCookingTime());
         dto.setCategory(entity.getCategory());
         dto.setAmount(entity.getAmount());
+        dto.setMedia(entity.getPictures());
     }
 
     void mapDtoToEntity(RecipeDTO dto, Recipe entity) {
@@ -41,6 +42,7 @@ public class RecipeFacade {
         entity.setCookingTime(dto.getCookingTime());
         entity.setCategory(dto.getCategory());
         entity.setAmount(dto.getAmount());
+        entity.setPictures(dto.getMedia());
 
     }
 

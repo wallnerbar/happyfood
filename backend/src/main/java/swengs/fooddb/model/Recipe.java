@@ -5,10 +5,7 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @JsonIdentityInfo(
@@ -39,10 +36,6 @@ public class Recipe {
     @JsonIgnore
     private long version;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "foodImage_id")
-    private FoodImage foodImage;
-
     @ManyToMany
     @JoinTable(name = "ingredients_recipe",
             joinColumns = @JoinColumn(name = "recipe_id"),
@@ -63,6 +56,13 @@ public class Recipe {
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     private Set<User> favorites;
+
+    @ManyToMany
+    @JoinTable(name = "recipe_pictures",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "pictures_id")
+    )
+    private Set<Media> pictures = new HashSet<>();
 
     public Recipe() {
     }
@@ -129,14 +129,6 @@ public class Recipe {
         this.amount = amount;
     }
 
-    public FoodImage getFoodImage() {
-        return foodImage;
-    }
-
-    public void setFoodImage(FoodImage foodImage) {
-        this.foodImage = foodImage;
-    }
-
     public Set<Ingredients> getIngredients() {
         return ingredients;
     }
@@ -161,6 +153,13 @@ public class Recipe {
         this.favorites = favorites;
     }
 
+    public Set<Media> getPictures() {
+        return pictures;
+    }
+
+    public void setPictures(Set<Media> pictures) {
+        this.pictures = pictures;
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import swengs.fooddb.dto.UserDTO;
 import swengs.fooddb.model.User;
 import swengs.fooddb.model.UserProfile;
+import swengs.fooddb.service.MediaService;
 import swengs.fooddb.service.UserService;
 
 @Service
@@ -15,6 +16,9 @@ public class UserFacade {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private MediaService mediaService;
+
     void mapDtoToEntity(UserDTO dto, User entity) {
         UserProfile profile = entity.getUserProfile();
         entity.setUsername(dto.getUsername());
@@ -22,7 +26,7 @@ public class UserFacade {
         profile.setLastName(dto.getLastName());
         profile.setGender(dto.getGender());
         profile.setDescription(dto.getDescription());
-        entity.setUserProfile(profile);
+        entity.setPictures(dto.getMedia());
     }
 
     private void mapEntityToDto(User entity, UserDTO dto) {
@@ -32,6 +36,7 @@ public class UserFacade {
         dto.setLastName(entity.getUserProfile().getLastName());
         dto.setGender(entity.getUserProfile().getGender());
         dto.setDescription(entity.getUserProfile().getDescription());
+        dto.setMedia(entity.getPictures());
     }
 
     public UserDTO update(Long id, UserDTO dto) {

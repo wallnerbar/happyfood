@@ -3,6 +3,9 @@ package swengs.fooddb.dto;
 import swengs.fooddb.model.Complexity;
 import swengs.fooddb.model.CategoryType;
 import swengs.fooddb.model.Amount;
+import swengs.fooddb.model.Media;
+
+import java.util.Set;
 
 public class RecipeDTO {
 
@@ -13,6 +16,7 @@ public class RecipeDTO {
     private String cookingTime;
     private CategoryType category;
     private Amount amount;
+    private Set<Media> media;
 
     public long getId() {
         return id;
@@ -68,5 +72,13 @@ public class RecipeDTO {
 
     public void setAmount(Amount amount) {
         this.amount = amount;
+    }
+
+    public Set<Media> getMedia() {
+        return media;
+    }
+
+    public void setMedia(Set<Media> media) {
+        this.media = media;
     }
 }

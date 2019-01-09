@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -38,6 +39,13 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "recipe_id")
     )
     private Set<Recipe> favorites;
+
+    @ManyToMany
+    @JoinTable(name = "user_pictures",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "pictures_id")
+    )
+    private Set<Media> pictures = new HashSet<>();
 
     public boolean isAdmin() {
         return admin;
@@ -85,6 +93,14 @@ public class User {
 
     public void setFavorites(Set<Recipe> favorites) {
         this.favorites = favorites;
+    }
+
+    public Set<Media> getPictures() {
+        return pictures;
+    }
+
+    public void setPictures(Set<Media> pictures) {
+        this.pictures = pictures;
     }
 
     @Override

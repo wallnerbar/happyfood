@@ -6,7 +6,9 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @JsonIdentityInfo(
@@ -34,10 +36,6 @@ public class UserProfile {
     @OneToOne(mappedBy = "profile", cascade = CascadeType.ALL,
                 fetch = FetchType.LAZY, optional = false)
     private User user;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userImage_id")
-    private UserImage userImage;
 
     public UserProfile(){
     }
@@ -102,14 +100,6 @@ public class UserProfile {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public UserImage getUserImage() {
-        return userImage;
-    }
-
-    public void setUserImage(UserImage userImage) {
-        this.userImage = userImage;
     }
 
     @Override

@@ -1,6 +1,9 @@
 package swengs.fooddb.dto;
 
 import swengs.fooddb.model.Gender;
+import swengs.fooddb.model.Media;
+
+import java.util.Set;
 
 
 public class UserDTO {
@@ -11,7 +14,7 @@ public class UserDTO {
     private String lastName;
     private Gender gender;
     private String description;
-    private Long image;
+    private Set<Media> media;
 
     public Long getId() {
         return id;
@@ -61,11 +64,11 @@ public class UserDTO {
         this.description = description;
     }
 
-    public Long getImage() {
-        return image;
+    public Set<Media> getMedia() {
+        return media;
     }
 
-    public void setImage(Long image) {
-        this.image = image;
+    public void setMedia(Set<Media> media) {
+        this.media = media;
     }
 }
