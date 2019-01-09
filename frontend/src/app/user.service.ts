@@ -39,11 +39,18 @@ export class UserService {
       localStorage.setItem(this.accessTokenLocalStorageKey, token);
       console.log(this.jwtHelperService.decodeToken(token));
       this.loggedInChange.next(true);
-      this.router.navigate(['/actor-list']);
+      this.router.navigate(['/test-list']);
       return res;
     }));
   }
-  /*login(user) {
+  /*constructor(private http: HttpClient, private router: Router) {
+    this.isLoggedIn = !!localStorage.getItem(this.accessTokenLocalStorageKey);
+    this.loggedInChange.subscribe((value) => {
+      this.isLoggedIn = value;
+    });
+  }
+
+  login(user) {
     return this.http.post('/api/auth/', user, {
       'headers': new HttpHeaders({'Content-Type': 'application/json'}),
       'responseType': 'text',
