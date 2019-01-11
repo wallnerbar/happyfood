@@ -44,25 +44,8 @@ export class UserService {
       return res;
     }));
   }
-  /*constructor(private http: HttpClient, private router: Router) {
-    this.isLoggedIn = !!localStorage.getItem(this.accessTokenLocalStorageKey);
-    this.loggedInChange.subscribe((value) => {
-      this.isLoggedIn = value;
-    });
-  }
 
-  login(user) {
-    return this.http.post('/api/auth/', user, {
-      'headers': new HttpHeaders({'Content-Type': 'application/json'}),
-      'responseType': 'text',
-      observe: 'response'
-    }).pipe(map((res: any) => {
-      localStorage.setItem(this.accessTokenLocalStorageKey, res.headers.get('Authorization'));
-      this.loggedInChange.next(true);
-      this.router.navigate(['/test-list']);
-      return res;
-    }));
-  }*/
+
 
   logout() {
     localStorage.removeItem(this.accessTokenLocalStorageKey);
