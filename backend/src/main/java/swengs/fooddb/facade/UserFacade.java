@@ -9,7 +9,7 @@ import swengs.fooddb.model.UserProfile;
 import swengs.fooddb.service.MediaService;
 import swengs.fooddb.service.UserService;
 
-@Service
+@Service()
 @Transactional
 public class UserFacade {
 
@@ -20,8 +20,13 @@ public class UserFacade {
     private MediaService mediaService;
 
     void mapDtoToEntity(UserDTO dto, User entity) {
-        UserProfile profile = entity.getUserProfile();
-        entity.setUsername(dto.getUsername());
+        UserProfile profile = userService.getProfile(entity);
+        if(profile == null)
+        {
+            profile = new UserProfile();
+            entity.setUserProfile(profile);
+        }
+        //entity.setUsername(dto.getUsername());
         profile.setFirstName(dto.getFirstName());
         profile.setLastName(dto.getLastName());
         profile.setGender(dto.getGender());
@@ -31,7 +36,7 @@ public class UserFacade {
 
     private void mapEntityToDto(User entity, UserDTO dto) {
         dto.setId(entity.getId());
-        dto.setUsername(entity.getUsername());
+        //dto.setUsername(entity.getUsername());
         dto.setFirstName(entity.getUserProfile().getFirstName());
         dto.setLastName(entity.getUserProfile().getLastName());
         dto.setGender(entity.getUserProfile().getGender());
@@ -40,14 +45,14 @@ public class UserFacade {
     }
 
     public UserDTO update(Long id, UserDTO dto) {
-        User entity = userService.getProfile(userService.findById(id).get());
+        User entity = userService.findById(id).get();
         mapDtoToEntity(dto, entity);
         mapEntityToDto(userService.save(entity), dto);
         return dto;
     }
 
     public UserDTO create(UserDTO dto) {
-        User entity = userService.getProfile(new User());
+        User entity = new User();
         mapDtoToEntity(dto, entity);
         mapEntityToDto(userService.save(entity), dto);
         return dto;

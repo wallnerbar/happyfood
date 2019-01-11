@@ -33,8 +33,7 @@ public class UserProfile {
     @JsonIgnore
     private long version;
 
-    @OneToOne(mappedBy = "profile", cascade = CascadeType.ALL,
-                fetch = FetchType.LAZY, optional = false)
+    @OneToOne
     private User user;
 
     public UserProfile(){

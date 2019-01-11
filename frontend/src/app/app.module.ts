@@ -1,7 +1,7 @@
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
@@ -13,6 +13,7 @@ import {FileUploadModule, FileUploader} from 'ng2-file-upload';
 import {MediainputComponent} from './mediainput/mediainput.component';
 import { ProfileListComponent } from './profile-list/profile-list.component';
 import { ProfileFormComponent } from './profile-form/profile-form.component';
+import {ButtonsModule} from 'ngx-bootstrap';
 
 export function tokenGetter() {
   return localStorage.getItem( 'access_token');
@@ -34,7 +35,9 @@ export function tokenGetter() {
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     FileUploadModule,
+    ButtonsModule.forRoot(),
     JwtModule.forRoot( {
       config: {
         tokenGetter: tokenGetter,

@@ -14,17 +14,17 @@ public class UserController {
     @Autowired
     private UserFacade userFacade;
 
-    @GetMapping("/dto/users/{id}")
+    @GetMapping("/dto/profiles/{id}")
     UserDTO getById(@PathVariable Long id) {
         return userFacade.getById(id);
     }
 
-    @PostMapping("/dto/users")
+    @PostMapping("/dto/profiles")
     UserDTO create(@RequestBody @Valid UserDTO dto) {
         return userFacade.create(dto);
     }
 
-    @PutMapping("/dto/users/{id}")
+    @PutMapping("/dto/profiles/{id}")
     UserDTO update(@RequestBody @Valid UserDTO dto, @PathVariable Long id) {
         return userFacade.update(id, dto);
     }

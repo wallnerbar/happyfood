@@ -23,7 +23,6 @@ public class User {
     private boolean admin;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userProfile_id")
     private UserProfile profile;
 
     @ManyToMany
