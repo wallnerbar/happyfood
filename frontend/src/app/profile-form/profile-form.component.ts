@@ -60,7 +60,7 @@ export class ProfileFormComponent implements OnInit {
   saveProfile() {
     const profile = this.profileForm.value;
     if (profile.id) {
-      this.userService.update(profile)
+      this.userprofileService.update(profile)
         .subscribe((response) => {
           alert('updated successfully');
           this.profileForm.setValue(response);
@@ -69,7 +69,7 @@ export class ProfileFormComponent implements OnInit {
           }
         });
     } else {
-      this.userService.create(profile)
+      this.userprofileService.create(profile)
         .subscribe((response: any) => {
           alert('created successfully');
           if (this.shouldNavigateToList) {
