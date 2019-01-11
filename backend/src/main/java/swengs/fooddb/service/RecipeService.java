@@ -30,9 +30,4 @@ public class RecipeService {
         return recipeRepository.save(entity);
     }
 
-    /*
-    public User save(User entity) {
-        return userRepository.save(entity);
-    }
-     */
 }
