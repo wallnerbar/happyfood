@@ -18,7 +18,8 @@ export class ProfileListComponent implements OnInit {
 
   }
 
-  deleteActor(actor: Actor) {
+  /*
+  deleteProfile(profile: Profile) {
 
     this.actorService.delete(actor)
       .subscribe(() => {
@@ -30,5 +31,6 @@ export class ProfileListComponent implements OnInit {
   createActor() {
     this.router.navigate(['/actor-form']);
   }
+  */
 
 }
