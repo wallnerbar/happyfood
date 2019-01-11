@@ -22,6 +22,7 @@ export class ProfileListComponent implements OnInit {
 
   }
 
+
   deleteProfile(profile: UserProfile) {
 
     this.userService.delete(profile)
@@ -34,5 +35,6 @@ export class ProfileListComponent implements OnInit {
   createProfile() {
     this.router.navigate(['/profile-form']);
   }
+  */
 
 }
