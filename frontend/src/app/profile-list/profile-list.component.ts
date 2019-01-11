@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from '../user.service';
 import {UserProfile} from '../api/profile';
 import {Router} from '@angular/router';
+import {UserprofileService} from '../userprofile.service';
 
 @Component({
   selector: 'app-profile-list',
@@ -11,11 +12,11 @@ import {Router} from '@angular/router';
 export class ProfileListComponent implements OnInit {
   profiles: Array<UserProfile>;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private userprofileService: UserprofileService, private router: Router) { }
 
   ngOnInit() {
 
-    this.userService.getAll()
+    this.userprofileService.getAll()
       .subscribe((profiles: any) => {
         this.profiles = profiles;
       });
@@ -25,7 +26,7 @@ export class ProfileListComponent implements OnInit {
 
   deleteProfile(profile: UserProfile) {
 
-    this.userService.delete(profile)
+    this.userprofileService.delete(profile)
       .subscribe(() => {
         this.ngOnInit();
       });
@@ -35,6 +36,5 @@ export class ProfileListComponent implements OnInit {
   createProfile() {
     this.router.navigate(['/profile-form']);
   }
-  */
 
 }

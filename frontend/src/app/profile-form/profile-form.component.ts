@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivateRoutes} from '@angular/router/src/operators/activate_routes';
 import {UserService} from '../user.service';
+import {UserprofileService} from '../userprofile.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserProfile} from '../api/profile';
@@ -16,8 +17,8 @@ export class ProfileFormComponent implements OnInit {
   profileForm;
   shouldNavigateToList: boolean;
 
-  constructor(private http: HttpClient, private userService: UserService, private route: ActivatedRoute,
-              private router: Router) {
+  constructor(private http: HttpClient, private userService: UserService, private userprofileService: UserprofileService,
+              private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
@@ -32,7 +33,7 @@ export class ProfileFormComponent implements OnInit {
 
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.userService.getById(id)
+      this.userprofileService.getById(id)
         .subscribe((response) => {
           this.profileForm.setValue(response);
         });

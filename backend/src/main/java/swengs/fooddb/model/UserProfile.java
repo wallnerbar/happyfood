@@ -36,6 +36,13 @@ public class UserProfile {
     @OneToOne
     private User user;
 
+    @ManyToMany
+    @JoinTable(name = "profile_pictures",
+            joinColumns = @JoinColumn(name = "profile_id"),
+            inverseJoinColumns = @JoinColumn(name = "pictures_id")
+    )
+    private Set<Media> pictures = new HashSet<>();
+
     public UserProfile(){
     }
 
@@ -99,6 +106,14 @@ public class UserProfile {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Set<Media> getPictures() {
+        return pictures;
+    }
+
+    public void setPictures(Set<Media> pictures) {
+        this.pictures = pictures;
     }
 
     @Override
