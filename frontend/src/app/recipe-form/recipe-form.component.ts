@@ -13,6 +13,7 @@ export class RecipeFormComponent implements OnInit {
 
   recipeForm;
   shouldNavigateToList: boolean;
+  recipeOptions;
 
   constructor(private http: HttpClient, private recipeService: RecipeService,
               private route: ActivatedRoute, private router: Router) {
@@ -30,7 +31,9 @@ export class RecipeFormComponent implements OnInit {
       'amount': new FormControl(),
     });
 
-    const id = this.route.snapshot.paramMap.get('id');
+    const data = this.route.snapshot.data;
+    this.recipeOptions = data.recipe;
+    /*const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.recipeService.getById(id)
         .subscribe((response) => {
@@ -38,7 +41,7 @@ export class RecipeFormComponent implements OnInit {
         });
     } else {
       this.recipeForm.setValue();
-    }
+    }*/
   }
 
   saveRecipe() {
