@@ -14,6 +14,8 @@ import {MediainputComponent} from './mediainput/mediainput.component';
 import { ProfileListComponent } from './profile-list/profile-list.component';
 import { ProfileFormComponent } from './profile-form/profile-form.component';
 import {ButtonsModule} from 'ngx-bootstrap';
+import { RecipeFormComponent } from './recipe-form/recipe-form.component';
+import { RecipeListComponent } from './recipe-list/recipe-list.component';
 
 export function tokenGetter() {
   return localStorage.getItem( 'access_token');
@@ -27,7 +29,9 @@ export function tokenGetter() {
     TestListComponent,
     MediainputComponent,
     ProfileListComponent,
-    ProfileFormComponent
+    ProfileFormComponent,
+    RecipeFormComponent,
+    RecipeListComponent
   ],
   imports: [
     BrowserModule,

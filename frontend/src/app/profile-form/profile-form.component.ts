@@ -13,11 +13,11 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./profile-form.component.scss']
 })
 export class ProfileFormComponent implements OnInit {
-  profile: UserProfile;
+
   profileForm;
   shouldNavigateToList: boolean;
 
-  constructor(private http: HttpClient, private userService: UserService, private userprofileService: UserprofileService,
+  constructor(private http: HttpClient, private userprofileService: UserprofileService,
               private route: ActivatedRoute, private router: Router) {
   }
 
@@ -31,6 +31,7 @@ export class ProfileFormComponent implements OnInit {
       'description': new FormControl(),
     });
 
+
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.userprofileService.getById(id)
@@ -38,10 +39,10 @@ export class ProfileFormComponent implements OnInit {
           this.profileForm.setValue(response);
         });
     } else {
-      this.profileForm.setValue({});
+      this.profileForm.setValue({'id': null, 'firstName': '', 'lastName': '', 'gender': null, 'description': ''});
     }
   }
-
+/*
   createProfile() {
 
     if (this.profile.id) {
@@ -55,12 +56,12 @@ export class ProfileFormComponent implements OnInit {
           alert('created successfully');
         });
     }
-  }
+  }*/
 
   saveProfile() {
     const profile = this.profileForm.value;
     if (profile.id) {
-      this.userService.update(profile)
+      this.userprofileService.update(profile)
         .subscribe((response) => {
           alert('updated successfully');
           this.profileForm.setValue(response);
@@ -69,7 +70,7 @@ export class ProfileFormComponent implements OnInit {
           }
         });
     } else {
-      this.userService.create(profile)
+      this.userprofileService.create(profile)
         .subscribe((response: any) => {
           alert('created successfully');
           if (this.shouldNavigateToList) {

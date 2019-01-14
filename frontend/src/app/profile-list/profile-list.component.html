@@ -1,5 +1,6 @@
 <div *ngFor="let profile of profiles">
-  {{profile.firstName}} {{profile.lastName}}
-  <a [routerLink]="'/profile-form/' + profile.id">Edit</a>
-  <button type="button" (click)="deleteProfile(profile)">Delete</button>
+  {{profile.firstName}} {{profile.lastName}} <a [routerLink]="'/profile-form/' + profile.id">Edit</a> <button type="button" (click)="deleteProfile(profile)">Delete</button>
 </div>
+<button type="button" (click)="createProfile()">
+  Create Profile
+</button>
