@@ -14,17 +14,17 @@ public class RecipeController {
     @Autowired
     private RecipeFacade recipeFacade;
 
-    @GetMapping("/dto/recipe/{id}")
+    @GetMapping("/dto/recipes/{id}")
     RecipeDTO getById(@PathVariable Long id) {
         return recipeFacade.getById(id);
     }
 
-    @PostMapping("/dto/recipe")
+    @PostMapping("/dto/recipes")
     RecipeDTO create(@RequestBody @Valid RecipeDTO dto) {
         return recipeFacade.create(dto);
     }
 
-    @PutMapping("/dto/recipe/{id}")
+    @PutMapping("/dto/recipes/{id}")
     RecipeDTO update(@RequestBody @Valid RecipeDTO dto, @PathVariable Long id) {
         return recipeFacade.update(id, dto);
     }
