@@ -16,6 +16,9 @@ import { ProfileFormComponent } from './profile-form/profile-form.component';
 import {ButtonsModule} from 'ngx-bootstrap';
 import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
+import { IngredientFormComponent } from './ingredient-form/ingredient-form.component';
+import { IngredientListComponent } from './ingredient-list/ingredient-list.component';
+
 
 export function tokenGetter() {
   return localStorage.getItem( 'access_token');
@@ -31,6 +34,9 @@ export function tokenGetter() {
     ProfileListComponent,
     ProfileFormComponent,
     RecipeFormComponent,
+    RecipeListComponent,
+    IngredientFormComponent,
+    IngredientListComponent
     RecipeListComponent
   ],
   imports: [
