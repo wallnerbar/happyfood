@@ -66,7 +66,9 @@ export class RecipeFormComponent implements OnInit {
   }
 
   navigateToList() {
-    this.router.navigate(['/recipe-list']);
+    if (this.shouldNavigateToList) {
+      this.router.navigate(['/recipe-list']);
+    }
   }
 
   setShouldNavigateToList() {

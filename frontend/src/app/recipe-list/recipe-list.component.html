@@ -1,3 +1,4 @@
-<p>
-  recipe-list works!
-</p>
+<div *ngFor="let recipe of recipes">
+  {{recipe.title}} {{recipe.recipeDescription}} <a [routerLink]="'/recipe-form/' + recipe.id">Edit</a>
+  <button type="button" (click)="deleteRecipe(recipe)">Delete</button>
+</div>
