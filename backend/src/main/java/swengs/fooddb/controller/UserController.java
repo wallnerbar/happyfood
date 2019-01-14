@@ -1,10 +1,7 @@
 package swengs.fooddb.controller;
 
-import swengs.fooddb.dto.UserDTO;
 import swengs.fooddb.dto.UserProfileDTO;
-import swengs.fooddb.facade.UserFacade;
 import swengs.fooddb.facade.UserProfileFacade;
-import swengs.fooddb.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

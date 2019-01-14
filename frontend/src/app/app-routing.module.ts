@@ -5,14 +5,20 @@ import { AuthGuard} from './auth.guard';
 import {TestListComponent} from './test-list/test-list.component';
 import {ProfileFormComponent} from './profile-form/profile-form.component';
 import {ProfileListComponent} from './profile-list/profile-list.component';
+import {RecipeFormComponent} from './recipe-form/recipe-form.component';
+import {RecipeListComponent} from './recipe-list/recipe-list.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/test-list', pathMatch: 'full'},
-  {path: 'login', component: LoginComponent},
+  {path: '', redirectTo: '/profile-list', pathMatch: 'full'},
+  {path: 'profiles', component: ProfileFormComponent},
   {path: 'test-list', component: TestListComponent, canActivate: [AuthGuard]},
-  {path: 'profile-list', component: ProfileListComponent},
-  {path: 'profile-form', component: ProfileFormComponent},
-  {path: 'profile-form/:id', component: ProfileFormComponent},
+  {path: 'profile-list', component: ProfileListComponent, canActivate: [AuthGuard]},
+  {path: 'profile-form', component: ProfileFormComponent, canActivate: [AuthGuard]},
+  {path: 'profile-form/:id', component: ProfileFormComponent, canActivate: [AuthGuard]},
+  {path: 'recipe-form', component: RecipeFormComponent, canActivate: [AuthGuard]},
+  {path: 'recipe-form/:id', component: RecipeFormComponent, canActivate: [AuthGuard]},
+  {path: 'recipe-list', component: RecipeListComponent, canActivate: [AuthGuard]},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

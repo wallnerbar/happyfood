@@ -4,7 +4,6 @@ import {map} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {Subject} from 'rxjs';
 import {JwtHelperService} from '@auth0/angular-jwt';
-import {UserProfile} from './api/profile';
 
 @Injectable({
   providedIn: 'root'
