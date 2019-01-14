@@ -1,0 +1,15 @@
+<form [formGroup]="recipeForm" (ngSubmit)="saveRecipe()">
+  <label>
+    Title:
+    <input type="text" name="title" formControlName="title"/>
+  </label>
+  <label>
+    Last name:
+    <input type="text" name="lastName" formControlName="lastName"/>
+  </label>
+  <label>
+    Description:
+    <input type="text" name="description" formControlName="description"/>
+  </label>
+
+</form>

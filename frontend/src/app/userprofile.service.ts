@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {UserProfile} from './api/profile';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,17 +13,11 @@ export class UserprofileService {
   }
 
   getById(id: string) {
-    return this.http.get('/api/dto/profiles/' + id).pipe(map((res: any) => {
-      return res;
-    }));
+    return this.http.get('/api/dto/profiles/' + id);
   }
 
   getAll() {
-    return this.http.get('/api/profiles').pipe(
-      map((response: any) => {
-        return response._embedded.actors;
-      })
-    );
+    return this.http.get('api/profiles');
   }
 
   delete(profile) {
