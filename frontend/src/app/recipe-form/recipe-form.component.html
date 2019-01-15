@@ -1,14 +1,76 @@
 <form [formGroup]="recipeForm" (ngSubmit)="saveRecipe()">
-  <label>
-    Title:
-    <input type="text" name="title" formControlName="title"/>
-  </label>
-  <label>
-    Recipe Description
-    <input type="text" name="recipeDescription" formControlName="recipeDescription"/>
-  </label>
-  <button type="submit">
-    Create
-  </button>
+  <div class="recipe">
+
+    <div class="row">
+      <div class="col">
+        <h3>Title:</h3>
+        <label>
+          <input class="form-control form-control" type="text" name="title" formControlName="title" placeholder="Name of the Recipe">
+        </label>
+      </div>
+      <div class="col">
+        <h3>Cooking Time:</h3>
+        <label>
+          <input class="form-control form-control" type="text" name="cookingTime" formControlName="cookingTime" placeholder="Time of Cooking">
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <h3>Description:</h3>
+      <textarea class="form-control" name="recipeDescription" formControlName="recipeDescription" rows="4" placeholder="Description of the Recipe"></textarea>
+    </div>
+
+
+    <div class="row">
+      <div class="col">
+        <h3>Complexity:</h3>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="complexity" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Complexity
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">EINFACH</a>
+            <a class="dropdown-item" href="#">MITTEL</a>
+            <a class="dropdown-item" href="#">SCHWER</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <h3>Category:</h3>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="category" aria-haspopup="true" aria-expanded="false">
+            Category
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">VEGAN</a>
+            <a class="dropdown-item" href="#">VEGETARISCH</a>
+            <a class="dropdown-item" href="#">FLEISCH</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <br>
+    <button type="submit" class="btn btn-dark">Create</button>
+
+
+
+  </div>
 
 </form>
+
+
+
+titel, description,'complexity'
+'cookingTime'
+'category'
+'amount'

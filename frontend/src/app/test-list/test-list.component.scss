@@ -2,6 +2,7 @@
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
+  float: left;
 }
 .img-fluid{
   object-fit: cover;
@@ -15,7 +16,10 @@
   margin-left: auto;
   margin-right: auto;
 
+
+
 }
+
 
 .container{
   margin-top: 50px;
