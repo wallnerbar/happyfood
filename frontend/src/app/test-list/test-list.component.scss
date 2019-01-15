@@ -1,67 +1,26 @@
-ul {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  list-style-type: none;
-  margin: auto;
-  padding: auto;
-  overflow: hidden;
-  background-color: #333;
-}
-
-li {
+.navbar-inverse{
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
   float: left;
 }
-
-li a {
-  display: inline-block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  border: none;
-
-}
-
-li a:hover {
-  background-color: #111;
-}
-
-.active {
-  background-color: #4CAF50;
-}
-
-body {
-  width: auto;
-}
-
-div.gallery {
-  margin: 60px;
-  margin-top: 100px;
-  border: 1px solid #ccc;
-  float: left;
-  width: 400px;
-}
-
-div.gallery:hover {
-  border: 1px solid #777;
-}
-
-div.gallery img {
+.img-fluid{
+  object-fit: cover;
+  object-position: center; /* Center the image within the element */
   width: 100%;
+  max-height: 450px;
+  margin-bottom: 1rem;
+  max-width: 95%;
   height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+
+
 }
 
-.container {
+
+.container{
   margin-top: 50px;
-}
-  
-div.desc {
-  padding: 15px;
-  text-align: center;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
 }
