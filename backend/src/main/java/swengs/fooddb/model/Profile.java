@@ -15,7 +15,7 @@ import java.util.Set;
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
 
-public class UserProfile {
+public class Profile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,10 +43,10 @@ public class UserProfile {
     )
     private Set<Media> pictures = new HashSet<>();
 
-    public UserProfile(){
+    public Profile(){
     }
 
-    public UserProfile(String firstName, String lastName, String description) {
+    public Profile(String firstName, String lastName, String description) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.description = description;
@@ -120,7 +120,7 @@ public class UserProfile {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserProfile profile = (UserProfile) o;
+        Profile profile = (Profile) o;
         return id == profile.id;
     }
 
@@ -131,14 +131,15 @@ public class UserProfile {
 
     @Override
     public String toString() {
-        return "UserProfile{" +
+        return "Profile{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", gender=" + gender +
+                ", gender=" + gender + '\'' +
                 ", description='" + description + '\'' +
                 ", version=" + version +
                 '}';
     }
 
 }
+

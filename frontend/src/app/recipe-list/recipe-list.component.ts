@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {RecipeService} from '../recipe.service';
 import {Recipe} from '../api/recipe';
-import {UserProfile} from '../api/profile';
+import {Profile} from '../api/profile';
 
 @Component({
   selector: 'app-recipe-list',
