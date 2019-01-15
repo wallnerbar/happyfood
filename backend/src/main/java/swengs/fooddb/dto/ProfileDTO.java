@@ -5,7 +5,7 @@ import swengs.fooddb.model.Media;
 
 import java.util.Set;
 
-public class UserProfileDTO {
+public class ProfileDTO {
 
     private Long id;
     //private String username;
@@ -63,3 +63,4 @@ public class UserProfileDTO {
         this.media = media;
     }
 }
+

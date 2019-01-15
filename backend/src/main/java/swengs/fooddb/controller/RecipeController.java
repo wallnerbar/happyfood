@@ -3,7 +3,6 @@ package swengs.fooddb.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import swengs.fooddb.dto.RecipeDTO;
-import swengs.fooddb.dto.UserDTO;
 import swengs.fooddb.facade.RecipeFacade;
 
 import javax.validation.Valid;

@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { UserprofileService } from './userprofile.service';
+import { IngredientService } from './ingredient.service';
 
-describe('UserprofileService', () => {
+describe('IngredientService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: UserprofileService = TestBed.get(UserprofileService);
+    const service: IngredientService = TestBed.get(IngredientService);
     expect(service).toBeTruthy();
   });
 });

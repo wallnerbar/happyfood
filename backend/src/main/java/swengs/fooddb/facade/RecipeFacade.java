@@ -31,6 +31,7 @@ public class RecipeFacade {
         dto.setComplexity(entity.getComplexity());
         dto.setCookingTime(entity.getCookingTime());
         dto.setCategory(entity.getCategory());
+        dto.setUnit(entity.getUnit());
         dto.setAmount(entity.getAmount());
         dto.setMedia(entity.getPictures());
     }
@@ -41,6 +42,7 @@ public class RecipeFacade {
         entity.setComplexity(dto.getComplexity());
         entity.setCookingTime(dto.getCookingTime());
         entity.setCategory(dto.getCategory());
+        entity.setUnit(dto.getUnit());
         entity.setAmount(dto.getAmount());
         entity.setPictures(dto.getMedia());
 

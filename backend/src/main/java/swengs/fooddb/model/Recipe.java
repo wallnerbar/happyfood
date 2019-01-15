@@ -29,6 +29,8 @@ public class Recipe {
     @Enumerated(EnumType.STRING)
     private CategoryType category;
 
+    private int unit;
+
     @Enumerated(EnumType.STRING)
     private Amount amount;
 
@@ -37,11 +39,11 @@ public class Recipe {
     private long version;
 
     @ManyToMany
-    @JoinTable(name = "ingredients_recipe",
+    @JoinTable(name = "ingredient_recipe",
             joinColumns = @JoinColumn(name = "recipe_id"),
-            inverseJoinColumns = @JoinColumn(name = "ingredients_id")
+            inverseJoinColumns = @JoinColumn(name = "ingredient_id")
     )
-    private Set<Ingredients> ingredients;
+    private Set<Ingredient> ingredients;
 
     @ManyToMany
     @JoinTable(name = "user_recipe",
@@ -67,10 +69,11 @@ public class Recipe {
     public Recipe() {
     }
 
-    public Recipe(String title, String recipeDescription, String cookingTime) {
+    public Recipe(String title, String recipeDescription, String cookingTime, int unit) {
         this.title = title;
         this.recipeDescription = recipeDescription;
         this.cookingTime = cookingTime;
+        this.unit = unit;
     }
 
     public long getId() {
@@ -129,11 +132,11 @@ public class Recipe {
         this.amount = amount;
     }
 
-    public Set<Ingredients> getIngredients() {
+    public Set<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(Set<Ingredients> ingredients) {
+    public void setIngredients(Set<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 
@@ -161,6 +164,14 @@ public class Recipe {
         this.pictures = pictures;
     }
 
+    public int getUnit() {
+        return unit;
+    }
+
+    public void setUnit(int unit) {
+        this.unit = unit;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -183,9 +194,9 @@ public class Recipe {
                 ", complexity=" + complexity +
                 ", cookingTime='" + cookingTime + '\'' +
                 ", category=" + category +
+                ", unit=" + unit +
                 ", amount=" + amount +
                 ", version=" + version +
                 '}';
     }
-
 }

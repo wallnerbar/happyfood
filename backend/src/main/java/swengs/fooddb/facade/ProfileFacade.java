@@ -3,22 +3,23 @@ package swengs.fooddb.facade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import swengs.fooddb.dto.UserProfileDTO;
-import swengs.fooddb.model.UserProfile;
+import swengs.fooddb.dto.ProfileDTO;
+import swengs.fooddb.model.Profile;
 import swengs.fooddb.service.MediaService;
-import swengs.fooddb.service.UserProfileService;
+import swengs.fooddb.service.ProfileService;
+import swengs.fooddb.model.Gender;
 
 @Service()
 @Transactional
-public class UserProfileFacade {
+public class ProfileFacade {
 
     @Autowired
-    private UserProfileService userProfileService;
+    private ProfileService profileService;
 
     @Autowired
     private MediaService mediaService;
 
-    void mapDtoToEntity(UserProfileDTO dto, UserProfile entity) {
+    void mapDtoToEntity(ProfileDTO dto, Profile entity) {
         entity.setFirstName(dto.getFirstName());
         entity.setLastName(dto.getLastName());
         entity.setGender(dto.getGender());
@@ -26,7 +27,7 @@ public class UserProfileFacade {
         entity.setPictures(dto.getMedia());
     }
 
-    private void mapEntityToDto(UserProfile entity, UserProfileDTO dto) {
+    private void mapEntityToDto(Profile entity, ProfileDTO dto) {
         dto.setId(entity.getId());
         dto.setFirstName(entity.getFirstName());
         dto.setLastName(entity.getLastName());
@@ -35,24 +36,25 @@ public class UserProfileFacade {
         dto.setMedia(entity.getPictures());
     }
 
-    public UserProfileDTO update(Long id, UserProfileDTO dto) {
-        UserProfile entity = userProfileService.findById(id).get();
+    public ProfileDTO update(Long id, ProfileDTO dto) {
+        Profile entity = profileService.findById(id).get();
         mapDtoToEntity(dto, entity);
-        mapEntityToDto(userProfileService.save(entity), dto);
+        mapEntityToDto(profileService.save(entity), dto);
         return dto;
     }
 
-    public UserProfileDTO create(UserProfileDTO dto) {
-        UserProfile entity = new UserProfile();
+    public ProfileDTO create(ProfileDTO dto) {
+        Profile entity = new Profile();
         mapDtoToEntity(dto, entity);
-        mapEntityToDto(userProfileService.save(entity), dto);
+        mapEntityToDto(profileService.save(entity), dto);
         return dto;
     }
 
-    public UserProfileDTO getById(Long id) {
-        UserProfile entity = userProfileService.findById(id).get();
-        UserProfileDTO dto = new UserProfileDTO();
+    public ProfileDTO getById(Long id) {
+        Profile entity = profileService.findById(id).get();
+        ProfileDTO dto = new ProfileDTO();
         mapEntityToDto(entity, dto);
         return dto;
     }
 }
+

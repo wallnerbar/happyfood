@@ -5,5 +5,6 @@ export interface Recipe {
   complexity: string;
   cookingTime: string;
   category: string;
+  unit: number;
   amount: string;
 }

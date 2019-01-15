@@ -19,6 +19,8 @@ import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { IngredientFormComponent } from './ingredient-form/ingredient-form.component';
 import { IngredientListComponent } from './ingredient-list/ingredient-list.component';
 import {MatSelectModule} from '@angular/material/select';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 
 export function tokenGetter() {
@@ -38,7 +40,8 @@ export function tokenGetter() {
     RecipeListComponent,
     IngredientFormComponent,
     IngredientListComponent
-
+    IngredientListComponent,
+    RecipeListComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ export function tokenGetter() {
     ReactiveFormsModule,
     MatSelectModule,
     FileUploadModule,
+    NgbModule,
     ButtonsModule.forRoot(),
     JwtModule.forRoot( {
       config: {

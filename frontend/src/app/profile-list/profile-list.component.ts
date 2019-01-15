@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {UserProfile} from '../api/profile';
+import {Profile} from '../api/profile';
 import {Router} from '@angular/router';
-import {UserprofileService} from '../userprofile.service';
+import {ProfileService} from '../profile.service';
 
 @Component({
   selector: 'app-profile-list',
@@ -10,13 +10,13 @@ import {UserprofileService} from '../userprofile.service';
 })
 export class ProfileListComponent implements OnInit {
 
-  profiles: Array<UserProfile>;
+  profiles: Array<Profile>;
 
-  constructor(private userprofileService: UserprofileService, private router: Router) { }
+  constructor(private profileService: ProfileService, private router: Router) { }
 
   ngOnInit() {
 
-    this.userprofileService.getAll()
+    this.profileService.getAll()
       .subscribe((response: any) => {
         this.profiles = response._embedded.profiles;
       });
@@ -24,9 +24,9 @@ export class ProfileListComponent implements OnInit {
   }
 
 
-  deleteProfile(profile: UserProfile) {
+  deleteProfile(profile: Profile) {
 
-    this.userprofileService.delete(profile)
+    this.profileService.delete(profile)
       .subscribe(() => {
         this.ngOnInit();
       });
