@@ -23,7 +23,7 @@ public class User {
     private boolean admin;
 
     @OneToOne(fetch = FetchType.LAZY)
-    private UserProfile profile;
+    private Profile profiles;
 
     @ManyToMany
     @JoinTable(name = "user_recipe",
@@ -70,12 +70,12 @@ public class User {
         this.password = password;
     }
 
-    public UserProfile getProfile() {
-        return profile;
+    public Profile getProfile() {
+        return profiles;
     }
 
-    public void setProfile(UserProfile profile) {
-        this.profile = profile;
+    public void setProfile(Profile profile) {
+        this.profiles = profiles;
     }
 
     public Set<Recipe> getRecipes() {
@@ -114,13 +114,6 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(username, password);
-    }
-
-    public UserProfile getUserProfile() {
-        return profile;
-    }
-
-    public void setUserProfile(UserProfile profile) {
     }
 
     public Long getId() {

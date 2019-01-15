@@ -7,8 +7,8 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
-@RepositoryRestResource(path="profiles")
-public interface UserProfileRepository extends PagingAndSortingRepository<UserProfile, Long>, JpaRepository<UserProfile, Long>, CrudRepository<UserProfile, Long> {
+@RepositoryRestResource
+public interface ProfileRepository extends PagingAndSortingRepository<Profile, Long>, JpaRepository<Profile, Long>, CrudRepository<Profile, Long> {
 
 
 

@@ -28,12 +28,13 @@ export class RecipeFormComponent implements OnInit {
       'complexity': new FormControl(),
       'cookingTime': new FormControl(),
       'category': new FormControl(),
+      'unit': new FormControl(),
       'amount': new FormControl(),
     });
 
-    const data = this.route.snapshot.data;
-    this.recipeOptions = data.recipe;
-    /*const id = this.route.snapshot.paramMap.get('id');
+    /*const data = this.route.snapshot.data;
+    this.recipeOptions = data.recipe;*/
+    const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.recipeService.getById(id)
         .subscribe((response) => {
@@ -41,7 +42,7 @@ export class RecipeFormComponent implements OnInit {
         });
     } else {
       this.recipeForm.setValue();
-    }*/
+    }
   }
 
   saveRecipe() {

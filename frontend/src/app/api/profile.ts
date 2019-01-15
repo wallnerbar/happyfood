@@ -1,7 +1,7 @@
-export interface UserProfile {
+export interface Profile {
   id?: number;
   firstName?: string;
   lastName?: string;
-  description?: string;
   gender?: string;
+  description?: string;
 }

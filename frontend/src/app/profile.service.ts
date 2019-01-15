@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
-import {UserProfile} from './api/profile';
+import {Profile} from './api/profile';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserprofileService {
+export class ProfileService {
 
   constructor(private http: HttpClient) {
   }
@@ -24,11 +24,11 @@ export class UserprofileService {
     return this.http.delete('/api/profiles/' + profile.id);
   }
 
-  update(profile: UserProfile) {
-    return this.http.put('/api/dto/profiles/' + profile.id, profile);
+  update(profile: Profile) {
+    return this.http.put('/api/dto/profiles' + profile.id, profile);
   }
 
-  create(profile: UserProfile) {
+  create(profile: Profile) {
     return this.http.post('/api/dto/profiles', profile);
   }
 }

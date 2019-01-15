@@ -15,6 +15,7 @@ public class RecipeDTO {
     private Complexity complexity;
     private String cookingTime;
     private CategoryType category;
+    private int unit;
     private Amount amount;
     private Set<Media> media;
 
@@ -80,5 +81,13 @@ public class RecipeDTO {
 
     public void setMedia(Set<Media> media) {
         this.media = media;
+    }
+
+    public int getUnit() {
+        return unit;
+    }
+
+    public void setUnit(int unit) {
+        this.unit = unit;
     }
 }

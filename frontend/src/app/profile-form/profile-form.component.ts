@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivateRoutes} from '@angular/router/src/operators/activate_routes';
 import {UserService} from '../user.service';
-import {UserprofileService} from '../userprofile.service';
+import {ProfileService} from '../profile.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {UserProfile} from '../api/profile';
+import {Profile} from '../api/profile';
 import {HttpClient} from '@angular/common/http';
 
 @Component({
@@ -16,8 +16,9 @@ export class ProfileFormComponent implements OnInit {
 
   profileForm;
   shouldNavigateToList: boolean;
+  profileOptions;
 
-  constructor(private http: HttpClient, private userprofileService: UserprofileService,
+  constructor(private http: HttpClient, private profileService: ProfileService,
               private route: ActivatedRoute, private router: Router) {
   }
 
@@ -31,16 +32,17 @@ export class ProfileFormComponent implements OnInit {
       'description': new FormControl(),
     });
 
-
-    const id = this.route.snapshot.paramMap.get('id');
+    const data = this.route.snapshot.data;
+    this.profileOptions = data.profile;
+    /*const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.userprofileService.getById(id)
+      this.profileService.getById(id)
         .subscribe((response) => {
           this.profileForm.setValue(response);
         });
     } else {
-      this.profileForm.setValue({'id': null, 'firstName': '', 'lastName': '', 'gender': null, 'description': ''});
-    }
+      this.profileForm.setValue();
+    }*/
   }
 /*
   createProfile() {
@@ -61,7 +63,7 @@ export class ProfileFormComponent implements OnInit {
   saveProfile() {
     const profile = this.profileForm.value;
     if (profile.id) {
-      this.userprofileService.update(profile)
+      this.profileService.update(profile)
         .subscribe((response) => {
           alert('updated successfully');
           this.profileForm.setValue(response);
@@ -70,7 +72,7 @@ export class ProfileFormComponent implements OnInit {
           }
         });
     } else {
-      this.userprofileService.create(profile)
+      this.profileService.create(profile)
         .subscribe((response: any) => {
           alert('created successfully');
           if (this.shouldNavigateToList) {

@@ -1,0 +1,3 @@
+<div *ngFor="let ingredient of ingredients">
+  {{ingredient.ingredientName}} <a [routerLink]="'/ingredient-form/' + ingredient.id">Edit</a>
+</div>

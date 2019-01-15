@@ -14,7 +14,7 @@ import java.util.Set;
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
 
-public class Ingredients {
+public class Ingredient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,16 +27,16 @@ public class Ingredients {
     private long version;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "ingredients_recipe",
-            joinColumns = @JoinColumn(name = "ingredients_id"),
+    @JoinTable(name = "ingredient_recipe",
+            joinColumns = @JoinColumn(name = "ingredient_id"),
             inverseJoinColumns = @JoinColumn(name = "recipe_id")
     )
     private Set<Recipe> recipes;
 
-    public Ingredients() {
+    public Ingredient() {
     }
 
-    public Ingredients(String ingredientName) {
+    public Ingredient(String ingredientName) {
         this.ingredientName = ingredientName;
     }
 
@@ -68,8 +68,8 @@ public class Ingredients {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Ingredients ingredients = (Ingredients) o;
-        return id == ingredients.id;
+        Ingredient ingredient = (Ingredient) o;
+        return id == ingredient.id;
     }
 
     @Override
@@ -79,10 +79,12 @@ public class Ingredients {
 
     @Override
     public String toString() {
-        return "Ingredients{" +
+        return "Ingredient{" +
                 "id=" + id +
                 ", ingredientName='" + ingredientName + '\'' +
                 ", version=" + version +
                 '}';
     }
 }
+
+
