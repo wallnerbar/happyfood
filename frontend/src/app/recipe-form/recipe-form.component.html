@@ -2,13 +2,80 @@
   <label>
     Title:
     <input type="text" name="title" formControlName="title"/>
+    <div *ngIf="recipeForm.controls.title.invalid && (recipeForm.controls.title.dirty || recipeForm.controls.title.touched)"
+         class="alert alert-danger">
+      <div *ngIf="recipeForm.controls.title.errors.required">
+        Name is required.
+      </div>
+    </div>
   </label>
+
+  <br>
+
   <label>
-    Recipe Description
+    Recipe Description:
     <input type="text" name="recipeDescription" formControlName="recipeDescription"/>
   </label>
+
+  <br>
+
+  <label>
+  <div class="row">
+    <div class="col">
+      <label>Complexity</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="complexity" id="exampleRadios1" formControlName="complexity" value="EINFACH">
+        <label class="form-check-label" for="exampleRadios1">
+          Einfach
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="complexity" id="exampleRadios2" formControlName="complexity" value="MITTEL">
+        <label class="form-check-label" for="exampleRadios2">
+          Mittel
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="complexity" id="exampleRadios3" formControlName="complexity" value="SCHWIERIG">
+        <label class="form-check-label" for="exampleRadios3">
+          Schwierig
+        </label>
+      </div>
+    </div>
+  </div>
+  </label>
+
+  <br>
+
+  <label>
+    Cooking Time:
+    <input type="text" name="cookingTime" formControlName="cookingTime"/>
+  </label>
+
+  <br>
+
+
+
+  <!-- test für dropdown menu
+  <label>
+  Complexity
+  <mat-form-field>
+    <select matNativeControl required [formControl]="selectFormControl">
+      <option name="complexity" value="EINFACH" id="complexity1" [formControlName]="complexity">Einfach</option>
+      <option name="complexity" value="MITTEL" id="complexity2" [formControlName]="complexity">Mittel</option>
+      <option name="complexity" value="SCHWER" id="complexity3" [formControlName]="complexity">Schwer</option>
+
+    </select>
+  </mat-form-field>
+  </label>
+--->
   <button type="submit">
     Create
   </button>
 
 </form>
+
+
+
+
+

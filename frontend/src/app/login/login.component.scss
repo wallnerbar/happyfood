@@ -1,16 +1,25 @@
+body {
+  background: url("https://images.pexels.com/photos/616404/pexels-photo-616404.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-repeat: no-repeat;
+  background-size: auto;
+
+}
 
 
 /* Bordered form */
 form {
-  border: 4px double rgba(80,255,14,0.52);;
+  border: 3px dashed darkgreen;
+
+
   width: 25%;
   text-align: center;
   margin: 15% auto;
-  background-color: rgba(208,228,245,0.87);
-  background-image: url("https://static1.squarespace.com/static/53a0470ce4b00a948fdede7f/t/53bc1f88e4b037448c609326/1404837769171/cooking+stock+photo.jpg?format=1500w");
+  //background-color: ;
+  //background-image: url("https://static1.squarespace.com/static/53a0470ce4b00a948fdede7f/t/53bc1f88e4b037448c609326/1404837769171/cooking+stock+photo.jpg?format=1500w");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: -18px -18px;
+
 
 
 }
@@ -20,7 +29,7 @@ label {
   font-size: 11px;
   letter-spacing: 1.2px;
   word-spacing: 1.8px;
-  color: #FEFFFF;
+  color: darkgreen;
   font-weight: 700;
   text-decoration: none solid rgb(68, 68, 68);
   font-style: italic;
@@ -39,7 +48,7 @@ input[type=text], input[type=password] {
 }
 
 #demotext {
-  color: transparent;
+  color: darkgreen;
   background: #666666;
   -webkit-background-clip: text;
   -moz-background-clip: text;

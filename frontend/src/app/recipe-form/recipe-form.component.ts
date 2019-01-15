@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {RecipeService} from '../recipe.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+
 
 @Component({
   selector: 'app-recipe-form',
@@ -23,7 +24,7 @@ export class RecipeFormComponent implements OnInit {
 
     this.recipeForm = new FormGroup( {
       'id': new FormControl(),
-      'title': new FormControl(),
+      'title': new FormControl('', [Validators.required]),
       'recipeDescription': new FormControl(),
       'complexity': new FormControl(),
       'cookingTime': new FormControl(),
@@ -34,6 +35,7 @@ export class RecipeFormComponent implements OnInit {
 
     /*const data = this.route.snapshot.data;
     this.recipeOptions = data.recipe;*/
+
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.recipeService.getById(id)
