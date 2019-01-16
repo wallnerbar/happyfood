@@ -38,14 +38,6 @@
   </div>
 </nav>
 
-</body>
-</html>
-
-
-
-
-
-
 <form [formGroup]="ingredientForm" (ngSubmit)="saveIngredient()">
 
   <div class="ingredient">
@@ -55,9 +47,12 @@
     </label>
     <br>
     <button type="submit" class="btn btn-dark">Create</button>
-    <button type="submit" class="btn btn-dark" [routerLink]="'/profile-form/' + profile.id">Back</button>
+    <button type="submit" class="btn btn-dark" [routerLink]="'/ingredient-list/' + ingredient.id">Back</button>
     <button type="submit" class="btn btn-dark" (click)="setShouldNavigateToList()">
       Save and Back
     </button>
   </div>
 </form>
+
+</body>
+</html>

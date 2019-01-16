@@ -19,6 +19,7 @@ import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { IngredientFormComponent } from './ingredient-form/ingredient-form.component';
 import { IngredientListComponent } from './ingredient-list/ingredient-list.component';
 import {MatTableModule} from '@angular/material/table';
+import { FavouriteListComponent } from './favourite-list/favourite-list.component';
 
 
 export function tokenGetter() {
@@ -39,7 +40,8 @@ export function tokenGetter() {
     IngredientFormComponent,
     IngredientListComponent,
     IngredientListComponent,
-    RecipeListComponent
+    RecipeListComponent,
+    FavouriteListComponent
   ],
   imports: [
     BrowserModule,
