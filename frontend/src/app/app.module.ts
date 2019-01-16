@@ -39,7 +39,6 @@ export function tokenGetter() {
     RecipeListComponent,
     IngredientFormComponent,
     IngredientListComponent,
-    IngredientListComponent,
     RecipeListComponent,
     FavouriteListComponent
   ],
