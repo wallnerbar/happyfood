@@ -18,6 +18,7 @@ public class RecipeDTO {
     private int unit;
     private Amount amount;
     private Set<Media> media;
+    private boolean favoriteRecipe = true;
 
     public long getId() {
         return id;
@@ -89,5 +90,13 @@ public class RecipeDTO {
 
     public void setUnit(int unit) {
         this.unit = unit;
+    }
+
+    public boolean isFavoriteRecipe() {
+        return favoriteRecipe;
+    }
+
+    public void setFavoriteRecipe(boolean favoriteRecipe) {
+        this.favoriteRecipe = favoriteRecipe;
     }
 }

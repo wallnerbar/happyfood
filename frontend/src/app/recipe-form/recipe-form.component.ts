@@ -31,10 +31,12 @@ export class RecipeFormComponent implements OnInit {
       'category': new FormControl(),
       'unit': new FormControl(),
       'amount': new FormControl(),
+      'favoriteRecipe': new FormControl(),
     });
 
     /*const data = this.route.snapshot.data;
     this.recipeOptions = data.recipe;*/
+
 
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {

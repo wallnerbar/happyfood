@@ -29,4 +29,8 @@ export class RecipeService {
   delete(recipe: Recipe) {
     return this.http.delete('/api/recipes/' + recipe.id);
   }
+
+  getMyFavorites() {
+    return this.http.get('/api/recipes/my-favorites');
+  }
 }

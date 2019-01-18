@@ -68,29 +68,11 @@
     </form>
   </div>
 </nav>
-<div class="text_title">
-  <h1>Alle Rezepte</h1>
-</div>
-<section class="details-card">
+<form formGroup="recipeForm" *ngFor="let favorite of favorites">
 
-    <div class="row">
-
-        <div class="card-content" *ngFor="let recipe of recipes">
-          <div class="card-img">
-            <img src="https://placeimg.com/380/230/nature" alt="">
-            <span><h4>{{recipe.title}}</h4></span>
-          </div>
-          <div class="card-desc">
-            <h3>{{recipe.title}}</h3>
-            <p>{{recipe.recipeDescription}}</p>
-            <a [routerLink]="['/recipe-form', recipe.id]" class="btn-card">More</a>
-          </div>
-        </div>
-
-    </div>
-
-</section>
+</form>
 
 </body>
 </html>
+
 

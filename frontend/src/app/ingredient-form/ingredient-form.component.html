@@ -27,8 +27,39 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      <div class="dropdown">
+        <li class="nav-item">
+          <a class="nav-link">Profil</a>
+          <div class="dropdown-content">
+            <a href="#">Mein Profil</a>
+            <a href="/profile-form">Profil bearbeiten</a>
+          </div>
+        </li>
+      </div>
+      <div class="dropdown">
+        <li class="nav-item">
+          <a class="nav-link">Rezepte</a>
+          <div class="dropdown-content">
+            <a href="/recipe-list">Alle Rezepte</a>
+            <a href="/favorite-list">Meine Favoriten</a>
+            <a href="/recipe-form">Rezept erstellen</a>
+          </div>
+        </li>
+      </div>
+      <div class="dropdown">
+        <li class="nav-item">
+          <a class="nav-link">Zutaten</a>
+          <div class="dropdown-content">
+            <a href="/ingredient-list">Zutatenliste</a>
+            <a href="/ingredient-form">Zutat erstellen</a>
+          </div>
+        </li>
+      </div>
       <li class="nav-item">
-        <a class="nav-link" href="/profile-form">Profil</a>
+        <a class="nav-link" href="/profile-form">Einkaufsliste</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Logout</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -37,21 +68,24 @@
     </form>
   </div>
 </nav>
-
 <form [formGroup]="ingredientForm" (ngSubmit)="saveIngredient()">
+<div class="ingredient">
+  <div class="row">
+    <div class="col">
+      <h3>Ingredient Name:</h3>
+      <label>
+        <input class="form-control form-control" type="text" name="ingredientName" formControlName="ingredientName" placeholder="Ingredient">
+      </label>
+    </div>
+  </div>
 
-  <div class="ingredient">
-    <label>
-      Ingredient Name:
-      <input type="text" name="ingredientName" formControlName="ingredientName"/>
-    </label>
     <br>
     <button type="submit" class="btn btn-dark">Create</button>
-    <button type="submit" class="btn btn-dark" [routerLink]="'/ingredient-list/' + ingredient.id">Back</button>
+    <button type="submit" class="btn btn-dark" [routerLink]="'/ingredient-list'">Back</button>
     <button type="submit" class="btn btn-dark" (click)="setShouldNavigateToList()">
       Save and Back
     </button>
-  </div>
+</div>
 </form>
 
 </body>

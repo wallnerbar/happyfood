@@ -34,6 +34,8 @@ public class Recipe {
     @Enumerated(EnumType.STRING)
     private Amount amount;
 
+    private boolean favoriteRecipe = true;
+
     @Version
     @JsonIgnore
     private long version;
@@ -170,6 +172,14 @@ public class Recipe {
 
     public void setUnit(int unit) {
         this.unit = unit;
+    }
+
+    public boolean isFavoriteRecipe() {
+        return favoriteRecipe;
+    }
+
+    public void setFavoriteRecipe(boolean favoriteRecipe) {
+        this.favoriteRecipe = favoriteRecipe;
     }
 
     @Override

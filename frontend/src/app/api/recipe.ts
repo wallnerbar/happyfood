@@ -7,4 +7,5 @@ export interface Recipe {
   category: string;
   unit: number;
   amount: string;
+  favoriteRecipe: boolean;
 }

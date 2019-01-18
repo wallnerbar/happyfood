@@ -25,6 +25,10 @@ public class UserService {
         return userRepository.save(entity);
     }
 
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
     /*public UserProfile getProfile(User entity)  {
         if (entity.getUserProfile() == null) {
             UserProfile profile = new UserProfile();
