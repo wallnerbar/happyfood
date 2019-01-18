@@ -18,7 +18,7 @@
   </label>
 
   <br>
-
+<!--
   <label>
   <div class="row">
     <div class="col">
@@ -46,7 +46,7 @@
   </label>
 
   <br>
-
+-->
   <label>
     Cooking Time:
     <input type="text" name="cookingTime" formControlName="cookingTime"/>
@@ -54,21 +54,15 @@
 
   <br>
 
-
-
-<!--
   <label>
   Complexity
-  <mat-form-field>
-    <select matNativeControl required [formControl]="selectFormControl">
-      <option name="complexity" value="EINFACH" id="complexity1" [formControlName]="complexity">Einfach</option>
-      <option name="complexity" value="MITTEL" id="complexity2" [formControlName]="complexity">Mittel</option>
-      <option name="complexity" value="SCHWER" id="complexity3" [formControlName]="complexity">Schwer</option>
+    <select required formControlName="complexity" id="complexity">
+      <option name="complexity" value="EINFACH">Einfach</option>
+      <option name="complexity" value="MITTEL">Mittel</option>
+      <option name="complexity" value="SCHWER">Schwer</option>
 
     </select>
-  </mat-form-field>
   </label>
---->
 
   <button type="submit">
     Create

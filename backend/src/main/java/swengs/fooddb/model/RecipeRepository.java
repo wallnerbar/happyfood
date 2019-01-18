@@ -11,6 +11,6 @@ import java.util.Dictionary;
 
 @RepositoryRestResource
 public interface RecipeRepository extends PagingAndSortingRepository<Recipe, Long>, JpaRepository<Recipe, Long>, CrudRepository<Recipe, Long> {
-
+    Recipe findAllByComplexity(Enum<Complexity> complexity);
 
 }

@@ -22,7 +22,7 @@ export class RecipeFormComponent implements OnInit {
 
   ngOnInit() {
 
-    this.recipeForm = new FormGroup( {
+    this.recipeForm = new FormGroup({
       'id': new FormControl(),
       'title': new FormControl('', [Validators.required]),
       'recipeDescription': new FormControl(),
@@ -42,11 +42,8 @@ export class RecipeFormComponent implements OnInit {
         .subscribe((response) => {
           this.recipeForm.setValue(response);
         });
-    } else {
-      this.recipeForm.setValue();
     }
   }
-
   saveRecipe() {
     const recipe = this.recipeForm.value;
     if (recipe.id) {
