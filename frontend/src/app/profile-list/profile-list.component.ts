@@ -35,10 +35,4 @@ export class ProfileListComponent implements OnInit {
         this.ngOnInit();
       });
   }
-
-  updateUser(user: User) {
-    this.userService.update(user).subscribe(
-      this.ngOnInit
-    );
-  }
 }

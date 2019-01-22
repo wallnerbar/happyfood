@@ -13,6 +13,7 @@ import {FavoriteListComponent} from './favorite-list/favorite-list.component';
 import {GrocerylistComponent} from './grocerylist/grocerylist.component';
 import {LogoutComponent} from './logout/logout.component';
 import {AuthResolver} from './resolver/auth.resolver';
+import {RegisterComponent} from './register/register.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/profile-list', pathMatch: 'full'},
@@ -34,7 +35,8 @@ const routes: Routes = [
   {path: 'favorite-list', component: FavoriteListComponent, canActivate: [AuthGuard]},
   {path: 'grocerylist', component: GrocerylistComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
-  {path: 'logout', component: LogoutComponent}
+  {path: 'logout', component: LogoutComponent},
+  {path: 'register', component: RegisterComponent},
 ];
 
 @NgModule({
