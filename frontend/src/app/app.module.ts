@@ -22,6 +22,7 @@ import {MatTableModule} from '@angular/material/table';
 import { FavoriteListComponent } from './favorite-list/favorite-list.component';
 import { GrocerylistComponent } from './grocerylist/grocerylist.component';
 import { RegisterComponent } from './register/register.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 export function tokenGetter() {
@@ -52,6 +53,7 @@ export function tokenGetter() {
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     FileUploadModule,
     MatTableModule,
