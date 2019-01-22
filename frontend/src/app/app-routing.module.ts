@@ -10,6 +10,8 @@ import {RecipeListComponent} from './recipe-list/recipe-list.component';
 import {IngredientFormComponent} from './ingredient-form/ingredient-form.component';
 import {IngredientListComponent} from './ingredient-list/ingredient-list.component';
 import {FavoriteListComponent} from './favorite-list/favorite-list.component';
+import {GrocerylistComponent} from './grocerylist/grocerylist.component';
+import {LogoutComponent} from './logout/logout.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/profile-list', pathMatch: 'full'},
@@ -26,7 +28,9 @@ const routes: Routes = [
   {path: 'ingredient-form/:id', component: IngredientFormComponent, canActivate: [AuthGuard]},
   {path: 'ingredient-list', component: IngredientListComponent, canActivate: [AuthGuard]},
   {path: 'favorite-list', component: FavoriteListComponent, canActivate: [AuthGuard]},
-  {path: 'login', component: LoginComponent}
+  {path: 'grocerylist', component: GrocerylistComponent, canActivate: [AuthGuard]},
+  {path: 'login', component: LoginComponent},
+  {path: 'logout', component: LogoutComponent}
 ];
 
 @NgModule({

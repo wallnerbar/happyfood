@@ -29,14 +29,17 @@ public class UserService {
         return userRepository.findByUsername(username);
     }
 
-    /*public UserProfile getProfile(User entity)  {
-        if (entity.getUserProfile() == null) {
-            UserProfile profile = new UserProfile();
-            profile.setUser(entity);
-            userProfileRepository.save(profile);
-            entity.setUserProfile(profile);
+    // Versuch User einbinden
+/*
+    public User getProfile(User entity)  {
+        if (entity.getUser() == null) {
+            User user = new User();
+            user.setUser(entity);
+            userRepository.save(user);
+            entity.setUser(user);
             save(entity);
         }
-        return entity.getUserProfile();
-    }*/
+        return entity.getUser();
+    }
+    */
 }

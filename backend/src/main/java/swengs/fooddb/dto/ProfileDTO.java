@@ -3,6 +3,7 @@ package swengs.fooddb.dto;
 import swengs.fooddb.model.Gender;
 import swengs.fooddb.model.Media;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class ProfileDTO {
@@ -13,7 +14,7 @@ public class ProfileDTO {
     private String lastName;
     private Gender gender;
     private String description;
-    private Set<Media> media;
+    private Set<Media> pictures = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -55,12 +56,12 @@ public class ProfileDTO {
         this.description = description;
     }
 
-    public Set<Media> getMedia() {
-        return media;
+    public Set<Media> getPictures() {
+        return pictures;
     }
 
-    public void setMedia(Set<Media> media) {
-        this.media = media;
+    public void setPictures(Set<Media> pictures) {
+        this.pictures = pictures;
     }
 }
 

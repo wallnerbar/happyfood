@@ -21,6 +21,9 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    private String username;
+    private String password;
+
     private String firstName;
     private String lastName;
 

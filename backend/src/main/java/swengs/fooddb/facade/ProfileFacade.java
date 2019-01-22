@@ -24,7 +24,7 @@ public class ProfileFacade {
         entity.setLastName(dto.getLastName());
         entity.setGender(dto.getGender());
         entity.setDescription(dto.getDescription());
-        entity.setPictures(dto.getMedia());
+        entity.setPictures(dto.getPictures());
     }
 
     private void mapEntityToDto(Profile entity, ProfileDTO dto) {
@@ -33,7 +33,7 @@ public class ProfileFacade {
         dto.setLastName(entity.getLastName());
         dto.setGender(entity.getGender());
         dto.setDescription(entity.getDescription());
-        dto.setMedia(entity.getPictures());
+        dto.setPictures(entity.getPictures());
     }
 
     public ProfileDTO update(Long id, ProfileDTO dto) {

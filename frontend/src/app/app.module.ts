@@ -20,6 +20,7 @@ import { IngredientFormComponent } from './ingredient-form/ingredient-form.compo
 import { IngredientListComponent } from './ingredient-list/ingredient-list.component';
 import {MatTableModule} from '@angular/material/table';
 import { FavoriteListComponent } from './favorite-list/favorite-list.component';
+import { GrocerylistComponent } from './grocerylist/grocerylist.component';
 
 
 export function tokenGetter() {
@@ -40,7 +41,8 @@ export function tokenGetter() {
     IngredientFormComponent,
     IngredientListComponent,
     RecipeListComponent,
-    FavoriteListComponent
+    FavoriteListComponent,
+    GrocerylistComponent
   ],
   imports: [
     BrowserModule,
