@@ -63,33 +63,55 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <input class="form-control mr-sm-2" placeholder="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
 </nav>
 <div class="text_title">
-  <h1>Alle Rezepte</h1>
+  <h1>All Recipes</h1>
+
 </div>
+
+<div class="button_style">
+  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <label class="btn btn-dark">
+      <input type="radio" name="options" id="option1" autocomplete="off" (click)="show('all')"> Alle
+    </label>
+    <label class="btn btn-dark">
+      <input type="radio" name="options" id="option2" autocomplete="off" (click)="show('LEICHT')"> Leicht
+    </label>
+    <label class="btn btn-dark">
+      <input type="radio" name="options" id="option3" autocomplete="off" (click)="show('MITTEL')"> Mittel
+    </label>
+    <label class="btn btn-dark">
+      <input type="radio" name="options" id="option4" autocomplete="off" (click)="show('SCHWER')"> Schwer
+    </label>
+  </div>
+</div>
+
+
+
 <section class="details-card">
 
     <div class="row">
 
-        <div class="card-content" *ngFor="let recipe of recipes">
-          <div class="card-img">
-            <img src="https://placeimg.com/380/230/nature" alt="">
-            <span><h4>{{recipe.title}}</h4></span>
-          </div>
-          <div class="card-desc">
-            <h3>{{recipe.title}}</h3>
-            <p>{{recipe.recipeDescription}}</p>
-            <a [routerLink]="['/recipe-form', recipe.id]" class="btn-card">More</a>
-          </div>
+      <div class="card-content" *ngFor="let recipe of showRecipes">
+        <div class="card-img">
+          <img src="https://placeimg.com/380/230/nature" alt="">
+          <span><h4>{{recipe.complexity}}</h4></span>
         </div>
+        <div class="card-desc">
+          <h3>{{recipe.title}}</h3>
+          <p>{{recipe.recipeDescription}}</p>
+          <a [routerLink]="['/recipe-site/' + recipe.id]" class="btn-card">More</a>
+        </div>
+      </div>
 
     </div>
 
 </section>
+
 
 </body>
 </html>

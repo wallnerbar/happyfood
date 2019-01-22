@@ -31,7 +31,7 @@
         <li class="nav-item">
           <a class="nav-link">Profil</a>
           <div class="dropdown-content">
-            <a href="/profile-site">Mein Profil</a>
+            <a href="#">Mein Profil</a>
             <a href="/profile-form">Profil bearbeiten</a>
           </div>
         </li>
@@ -59,7 +59,7 @@
         <a class="nav-link" href="/profile-form">Einkaufsliste</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/logout">Logout</a>
+        <a class="nav-link" href="/profile-form">Logout</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -69,36 +69,30 @@
   </div>
 </nav>
 
-
-<ngb-carousel *ngIf="images">
-  <ng-template ngbSlide>
-    <div class="home_center">
-    <img [src]="images[0]" alt="Random first slide">
+<div class="recipe_style">
+  <div class="row">
+    <div class="leftcolumn">
+      <div class="card">
+        <h2>My Profile</h2>
+        <br>
+        <div class="fakeimg" style="height:200px;">Image</div>
+        <br>
+        <h5>Firstname:</h5>
+        <p>{{profile.firstName}}</p>
+        <h5>Lastname:</h5>
+        <p>{{profile.lastName}}</p>
+        <h5>Gender:</h5>
+        <p>{{profile.gender}}</p>
+        <h5>About Me:</h5>
+        <p>{{profile.description}}</p>
+      </div>
     </div>
-    <div class="carousel-caption">
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-    </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <div class="home_center">
-    <img [src]="images[1]" alt="Random second slide">
-    </div>
-    <div class="carousel-caption">
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <div class="home_center">
-    <img [src]="images[2]" alt="Random third slide">
-    </div>
-    <div class="carousel-caption">
-      <h3>Third slide label</h3>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-    </div>
-  </ng-template>
-</ngb-carousel>
+  </div>
+</div>
+<div class="recipe_style_button">
+  <button type="submit" class="btn btn-dark" [routerLink]="'/recipe-form/' + recipe.id">Edit</button>
+  <button type="submit" class="btn btn-dark" [routerLink]="'/recipe-list'">Back</button>
+</div>
 
 
 </body>

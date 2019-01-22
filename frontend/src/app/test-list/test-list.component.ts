@@ -8,12 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./test-list.component.scss']
 })
 export class TestListComponent implements OnInit {
+  images = [1, 2, 3].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
+
 
   neuesteRezeptListe;
 
   constructor() { }
 
   ngOnInit() {
+
+
     //getRezepteListe() muss implementiert werden... gibt alle Rezepte aus
     // speichert alle rezepte in eine liste und holt die 3 mit die höchsten indexes in die neuesteRezeptListe
 

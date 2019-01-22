@@ -19,7 +19,16 @@
   </label>
 
   <br>
+  <label>
+    Complexity
+    <select required formControlName="complexity" id="complexity">
+      <option name="complexity" value="EINFACH">Einfach</option>
+      <option name="complexity" value="MITTEL">Mittel</option>
+      <option name="complexity" value="SCHWER">Schwer</option>
 
+    </select>
+  </label>
+<!--
   <label>
   <div class="row">
     <div class="col">
@@ -45,6 +54,7 @@
     </div>
   </div>
   </label>
+
 
   <br>
 
@@ -113,15 +123,16 @@
 
     </select>
   </label>
+
 -->
+  <br>
+
   <label>
     Cooking Time:
     <input type="text" name="cookingTime" formControlName="cookingTime" placeholder="z.b. circa 15 Minuten" required minlength="2" class="form-control"/>
   </label>
 
   <br>
-
-
   <div class="row">
     <div class="col">
       <div class="form-check">
@@ -134,7 +145,16 @@
   </div>
 
   <br>
+  <br>
 
+<!--
+  <div class="row">
+    <div class="col">
+      <h2>Bilder hochladen:</h2>
+      <app-mediainput name="pictures" [formControlName]="pictures"></app-mediainput>
+    </div>
+  </div>
+-->
 
   <button type="submit">
     Create

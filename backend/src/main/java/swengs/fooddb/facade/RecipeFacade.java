@@ -26,6 +26,9 @@ public class RecipeFacade {
     @Autowired
     private RecipeService recipeService;
 
+    @Autowired
+    private MediaService mediaService;
+
     public RecipeDTO getById(Long id) {
         Recipe entity = recipeService.findById(id).get();
         RecipeDTO dto = new RecipeDTO();

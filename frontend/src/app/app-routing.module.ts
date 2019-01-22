@@ -14,6 +14,8 @@ import {GrocerylistComponent} from './grocerylist/grocerylist.component';
 import {LogoutComponent} from './logout/logout.component';
 import {AuthResolver} from './resolver/auth.resolver';
 import {RegisterComponent} from './register/register.component';
+import {RecipeSiteComponent} from './recipe-site/recipe-site.component';
+import {ProfileSiteComponent} from './profile-site/profile-site.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/profile-list', pathMatch: 'full'},
@@ -37,6 +39,10 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'recipe-site/:id', component: RecipeSiteComponent, canActivate: [AuthGuard]},
+  {path: 'recipe-site', component: RecipeSiteComponent, canActivate: [AuthGuard]},
+  {path: 'profile-site', component: ProfileSiteComponent, canActivate: [AuthGuard]},
+  {path: 'profile-site/:id', component: ProfileSiteComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

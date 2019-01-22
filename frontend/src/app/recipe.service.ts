@@ -31,6 +31,6 @@ export class RecipeService {
   }
 
   getMyFavorites() {
-    return this.http.get('/api/recipes/my-favorites');
+    return this.http.get('/api/recipes/favorite-list');
   }
 }
