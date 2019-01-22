@@ -12,16 +12,29 @@ import {Profile} from '../api/profile';
 export class RecipeListComponent implements OnInit {
 
   recipes: Array<Recipe>;
+  showRecipes: Array<Recipe>;
 
-  constructor(private router: Router, private recipeService: RecipeService) { }
+  constructor(private router: Router, private recipeService: RecipeService) {
+  }
 
   ngOnInit() {
 
     this.recipeService.getAll()
       .subscribe((response: any) => {
         this.recipes = response._embedded.recipes;
+        this.showRecipes = this.recipes;
       });
   }
+
+  show(input: string) {
+    if (input === 'all') {
+      this.showRecipes = this.recipes;
+    } else {
+      this.showRecipes = this.recipes.filter(recipe => recipe.complexity === input);
+    }
+  }
+
+
 
   deleteRecipe(recipe: Recipe) {
 
@@ -33,3 +46,5 @@ export class RecipeListComponent implements OnInit {
   }
 
 }
+
+

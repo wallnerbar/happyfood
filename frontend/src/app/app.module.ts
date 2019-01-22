@@ -20,6 +20,11 @@ import { IngredientFormComponent } from './ingredient-form/ingredient-form.compo
 import { IngredientListComponent } from './ingredient-list/ingredient-list.component';
 import {MatTableModule} from '@angular/material/table';
 import { FavoriteListComponent } from './favorite-list/favorite-list.component';
+import { ProfileSiteComponent } from './profile-site/profile-site.component';
+import { RecipeSiteComponent } from './recipe-site/recipe-site.component';
+import {NgbAlertModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import {SafeUrlPipe} from './pipes/safe-url.pipe';
 
 
 export function tokenGetter() {
@@ -40,7 +45,11 @@ export function tokenGetter() {
     IngredientFormComponent,
     IngredientListComponent,
     RecipeListComponent,
-    FavoriteListComponent
+    FavoriteListComponent,
+    ProfileSiteComponent,
+    RecipeSiteComponent,
+    ShoppingListComponent,
+    SafeUrlPipe
   ],
   imports: [
     BrowserModule,
@@ -51,6 +60,8 @@ export function tokenGetter() {
     ReactiveFormsModule,
     FileUploadModule,
     MatTableModule,
+    NgbModule,
+    NgbAlertModule,
     ButtonsModule.forRoot(),
     JwtModule.forRoot( {
       config: {

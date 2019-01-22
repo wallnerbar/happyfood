@@ -29,7 +29,7 @@ public class RecipeController {
         return recipeFacade.update(id, dto);
     }
 
-    @GetMapping("/dto/recipes/my-favorites")
+    @GetMapping("/dto/recipes/favorite-list")
     List<RecipeDTO> getMyFavorites() {
         return recipeFacade.getMyFavorites();
     }

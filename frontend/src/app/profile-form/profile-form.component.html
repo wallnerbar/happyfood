@@ -113,9 +113,17 @@
     </div>
   </div>
 <br>
+
+  <div class="row">
+    <div class="col">
+      <h1>Pictures:</h1>
+      <app-mediainput id="pictures" name="pictures" formControlName="pictures" accept="image/*"></app-mediainput>
+    </div>
+  </div>
+<br>
   <button type="submit" class="btn btn-dark">Create</button>
-  <button type="submit" class="btn btn-dark" [routerLink]="'/test-list'">Back</button>
-  <button type="submit" class="btn btn-dark" (click)="setShouldNavigateToList()">
+  <button class="btn btn-dark" [routerLink]="'/test-list'">Back</button>
+  <button class="btn btn-dark" (click)="setShouldNavigateToList()">
     Save and Back
   </button>
   </div>

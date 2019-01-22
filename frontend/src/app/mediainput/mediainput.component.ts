@@ -1,4 +1,4 @@
-import {Component, ElementRef, forwardRef, OnInit} from '@angular/core';
+import {Component, ElementRef, forwardRef, OnInit, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {FileItem, FileUploader, ParsedResponseHeaders} from 'ng2-file-upload';
 import {HttpClient} from '@angular/common/http';
@@ -27,13 +27,16 @@ export class MediainputComponent implements OnInit, ControlValueAccessor {
   resourceUrl = '/api/media';
   name: string;
   medias: IMedia[];
+  previews: Array<string> = [];
   uploader: FileUploader;
+  accept: string;
   onChange = (medias: IMedia[]) => {
     // empty default
   }
 
   constructor(private userService: UserService, private http: HttpClient, elm: ElementRef) {
     this.name = elm.nativeElement.getAttribute('name');
+    this.accept = elm.nativeElement.getAttribute('accept');
   }
 
   ngOnInit() {
@@ -55,6 +58,7 @@ export class MediainputComponent implements OnInit, ControlValueAccessor {
     this.uploader.onSuccessItem = (item: FileItem, response: string, status: number, headers: ParsedResponseHeaders) => {
       const uploadedMedia = <IMedia>JSON.parse(response);
       this.medias.find(media => !media.id && media.originalFileName === uploadedMedia.originalFileName).id = uploadedMedia.id;
+      this.initPreviews();
     };
     this.uploader.onCompleteAll = () => {
       this.onChange(this.medias);
@@ -95,5 +99,19 @@ export class MediainputComponent implements OnInit, ControlValueAccessor {
   writeValue(obj: any): void {
     this.medias = obj;
     this.onChange(obj);
+    this.initPreviews();
+  }
+
+  initPreviews() {
+    if (this.medias) {
+      this.medias.forEach((media, index) => {
+        if (media.id && !this.previews[index]) {
+          this.http.get(`${this.resourceUrl}/${media.id}`, {responseType: 'blob'}).subscribe((blob: Blob) => {
+            const fileURL = URL.createObjectURL(blob);
+            this.previews[index] = fileURL;
+          });
+        }
+      });
+    }
   }
 }

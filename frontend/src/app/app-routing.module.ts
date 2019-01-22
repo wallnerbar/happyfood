@@ -10,6 +10,9 @@ import {RecipeListComponent} from './recipe-list/recipe-list.component';
 import {IngredientFormComponent} from './ingredient-form/ingredient-form.component';
 import {IngredientListComponent} from './ingredient-list/ingredient-list.component';
 import {FavoriteListComponent} from './favorite-list/favorite-list.component';
+import {RecipeSiteComponent} from './recipe-site/recipe-site.component';
+import {ProfileSiteComponent} from './profile-site/profile-site.component';
+import {ShoppingListComponent} from './shopping-list/shopping-list.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/profile-list', pathMatch: 'full'},
@@ -26,6 +29,11 @@ const routes: Routes = [
   {path: 'ingredient-form/:id', component: IngredientFormComponent, canActivate: [AuthGuard]},
   {path: 'ingredient-list', component: IngredientListComponent, canActivate: [AuthGuard]},
   {path: 'favorite-list', component: FavoriteListComponent, canActivate: [AuthGuard]},
+  {path: 'recipe-site/:id', component: RecipeSiteComponent, canActivate: [AuthGuard]},
+  {path: 'recipe-site', component: RecipeSiteComponent, canActivate: [AuthGuard]},
+  {path: 'profile-site', component: ProfileSiteComponent, canActivate: [AuthGuard]},
+  {path: 'profile-site/:id', component: ProfileSiteComponent, canActivate: [AuthGuard]},
+  {path: 'shopping-list', component: ShoppingListComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent}
 ];
 

@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import swengs.fooddb.dto.RecipeDTO;
 import swengs.fooddb.model.Recipe;
 import swengs.fooddb.model.User;
+import swengs.fooddb.service.MediaService;
 import swengs.fooddb.service.RecipeService;
 import swengs.fooddb.service.UserService;
 
@@ -24,6 +25,9 @@ public class RecipeFacade {
 
     @Autowired
     private RecipeService recipeService;
+
+    @Autowired
+    private MediaService mediaService;
 
     public RecipeDTO getById(Long id) {
         Recipe entity = recipeService.findById(id).get();

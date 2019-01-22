@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
@@ -15,7 +16,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+
 <!------ Include the above in your HEAD tag ---------->
 
 
@@ -63,56 +67,28 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" placeholder="Search">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
 </nav>
-<div class="text_title">
-  <h1>All Recipes</h1>
 
+<div id="myDIV" class="header">
+  <h2 style="margin:5px">My To Do List</h2>
+  <input type="text" id="myInput" placeholder="Title...">
+  <span onclick="newElement()" class="addBtn">Add</span>
 </div>
 
-<div class="button_style">
-  <div class="btn-group btn-group-toggle" data-toggle="buttons">
-    <label class="btn btn-dark">
-      <input type="radio" name="options" id="option1" autocomplete="off" (click)="show('all')"> Alle
-    </label>
-    <label class="btn btn-dark">
-      <input type="radio" name="options" id="option2" autocomplete="off" (click)="show('LEICHT')"> Leicht
-    </label>
-    <label class="btn btn-dark">
-      <input type="radio" name="options" id="option3" autocomplete="off" (click)="show('MITTEL')"> Mittel
-    </label>
-    <label class="btn btn-dark">
-      <input type="radio" name="options" id="option4" autocomplete="off" (click)="show('SCHWER')"> Schwer
-    </label>
-  </div>
-</div>
-
-
-
-<section class="details-card">
-
-    <div class="row">
-
-      <div class="card-content" *ngFor="let recipe of showRecipes">
-        <div class="card-img">
-          <img src="https://placeimg.com/380/230/nature" alt="">
-          <span><h4>{{recipe.complexity}}</h4></span>
-        </div>
-        <div class="card-desc">
-          <h3>{{recipe.title}}</h3>
-          <p>{{recipe.recipeDescription}}</p>
-          <a [routerLink]="['/recipe-site/' + recipe.id]" class="btn-card">More</a>
-        </div>
-      </div>
-
-    </div>
-
-</section>
-
+<ul id="myUL">
+  <li>Hit the gym</li>
+  <li class="checked">Pay bills</li>
+  <li>Meet George</li>
+  <li>Buy eggs</li>
+  <li>Read a book</li>
+  <li>Organize office</li>
+</ul>
 
 </body>
 </html>
+
 

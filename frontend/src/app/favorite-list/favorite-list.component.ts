@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Recipe} from '../api/recipe';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {RecipeService} from '../recipe.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
@@ -11,29 +11,19 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class FavoriteListComponent implements OnInit {
 
-  favorites: Array<Recipe>;
+  favorite: Array<Recipe>;
   shouldNavigateToList: boolean;
-  recipeForm;
 
-  constructor(private router: Router, private recipeService: RecipeService) {
+  constructor(private router: Router, private recipeService: RecipeService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
 
     this.recipeService.getMyFavorites()
       .subscribe((response: any) => {
-        this.favorites = response._embedded.favorites;
+        this.favorite = response;
       });
-
-    const favorites = this.recipeForm.favoriteRecipe;
-    if (favorites === true) {
-      this.recipeService.getMyFavorites();
-      if (this.shouldNavigateToList) {
-        this.navigateToList();
-      } else {
-        this.router.navigate(['/favorite-list']);
-      }
-    }
   }
 
   /*getMyFavorite() {

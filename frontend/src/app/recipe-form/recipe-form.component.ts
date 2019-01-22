@@ -32,6 +32,7 @@ export class RecipeFormComponent implements OnInit {
       'unit': new FormControl(),
       'amount': new FormControl(),
       'favoriteRecipe': new FormControl(),
+      'pictures': new FormControl(),
     });
 
     /*const data = this.route.snapshot.data;
@@ -45,6 +46,21 @@ export class RecipeFormComponent implements OnInit {
           this.recipeForm.setValue(response);
         });
     }
+
+    this.recipeForm.controls.favoriteRecipe.valueChanges
+      .subscribe((newValue) => {
+        if (newValue === true) {
+          this.router.navigate(['/favorite-list']);
+        }
+      });
+    /*
+    this.actorForm.controls.rating.valueChanges
+      .subscribe((newValue) => {
+        if (newValue > 5) {
+          this.actorForm.controls.alive.setValue(true);
+        }
+      });
+     */
   }
   saveRecipe() {
     const recipe = this.recipeForm.value;

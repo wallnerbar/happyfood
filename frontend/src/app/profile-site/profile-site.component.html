@@ -63,56 +63,39 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" placeholder="Search">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
 </nav>
-<div class="text_title">
-  <h1>All Recipes</h1>
 
-</div>
-
-<div class="button_style">
-  <div class="btn-group btn-group-toggle" data-toggle="buttons">
-    <label class="btn btn-dark">
-      <input type="radio" name="options" id="option1" autocomplete="off" (click)="show('all')"> Alle
-    </label>
-    <label class="btn btn-dark">
-      <input type="radio" name="options" id="option2" autocomplete="off" (click)="show('LEICHT')"> Leicht
-    </label>
-    <label class="btn btn-dark">
-      <input type="radio" name="options" id="option3" autocomplete="off" (click)="show('MITTEL')"> Mittel
-    </label>
-    <label class="btn btn-dark">
-      <input type="radio" name="options" id="option4" autocomplete="off" (click)="show('SCHWER')"> Schwer
-    </label>
+<div class="recipe_style">
+  <div class="row">
+    <div class="leftcolumn">
+      <div class="card">
+        <h2>My Profile</h2>
+        <br>
+        <div class="fakeimg" style="height:200px;">Image</div>
+        <br>
+        <h5>Firstname:</h5>
+        <p>{{profile.firstName}}</p>
+        <h5>Lastname:</h5>
+        <p>{{profile.lastName}}</p>
+        <h5>Gender:</h5>
+        <p>{{profile.gender}}</p>
+        <h5>About Me:</h5>
+        <p>{{profile.description}}</p>
+      </div>
+    </div>
   </div>
 </div>
-
-
-
-<section class="details-card">
-
-    <div class="row">
-
-      <div class="card-content" *ngFor="let recipe of showRecipes">
-        <div class="card-img">
-          <img src="https://placeimg.com/380/230/nature" alt="">
-          <span><h4>{{recipe.complexity}}</h4></span>
-        </div>
-        <div class="card-desc">
-          <h3>{{recipe.title}}</h3>
-          <p>{{recipe.recipeDescription}}</p>
-          <a [routerLink]="['/recipe-site/' + recipe.id]" class="btn-card">More</a>
-        </div>
-      </div>
-
-    </div>
-
-</section>
+<div class="recipe_style_button">
+  <button type="submit" class="btn btn-dark" [routerLink]="'/recipe-form/' + recipe.id">Edit</button>
+  <button type="submit" class="btn btn-dark" [routerLink]="'/recipe-list'">Back</button>
+</div>
 
 
 </body>
 </html>
+
 
