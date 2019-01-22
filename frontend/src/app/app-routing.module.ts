@@ -12,6 +12,7 @@ import {IngredientListComponent} from './ingredient-list/ingredient-list.compone
 import {FavoriteListComponent} from './favorite-list/favorite-list.component';
 import {GrocerylistComponent} from './grocerylist/grocerylist.component';
 import {LogoutComponent} from './logout/logout.component';
+import {AuthResolver} from './resolver/auth.resolver';
 
 const routes: Routes = [
   {path: '', redirectTo: '/profile-list', pathMatch: 'full'},
@@ -19,7 +20,10 @@ const routes: Routes = [
   {path: 'recipes/my-favorites', component: FavoriteListComponent},
   {path: 'test-list', component: TestListComponent, canActivate: [AuthGuard]},
   {path: 'profile-list', component: ProfileListComponent, canActivate: [AuthGuard]},
-  {path: 'profile-form', component: ProfileFormComponent, canActivate: [AuthGuard]},
+  {path: 'profile-form', component: ProfileFormComponent, canActivate: [AuthGuard],
+    resolve: {
+      user: AuthResolver,
+    } },
   {path: 'profile-form/:id', component: ProfileFormComponent, canActivate: [AuthGuard]},
   {path: 'recipe-form', component: RecipeFormComponent, canActivate: [AuthGuard]},
   {path: 'recipe-form/:id', component: RecipeFormComponent, canActivate: [AuthGuard]},

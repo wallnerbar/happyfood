@@ -1,6 +1,7 @@
 package swengs.fooddb.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
@@ -22,8 +23,12 @@ public class User {
     private String password;
     private boolean admin;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    private Profile profiles;
+    @Version
+    @JsonIgnore
+    private long version;
+
+    @OneToOne
+    private Profile profile;
 
     @ManyToMany
     @JoinTable(name = "user_recipe",
@@ -39,12 +44,36 @@ public class User {
     )
     private Set<Recipe> favorites;
 
-    @ManyToMany
-    @JoinTable(name = "user_pictures",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "pictures_id")
-    )
-    private Set<Media> pictures = new HashSet<>();
+    public User() {
+    }
+
+    public User(String username) {
+        this.username = username;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public boolean isAdmin() {
         return admin;
@@ -54,28 +83,12 @@ public class User {
         this.admin = admin;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public Profile getProfile() {
-        return profiles;
+        return profile;
     }
 
     public void setProfile(Profile profile) {
-        this.profiles = profiles;
+        this.profile = profile;
     }
 
     public Set<Recipe> getRecipes() {
@@ -94,31 +107,30 @@ public class User {
         this.favorites = favorites;
     }
 
-    public Set<Media> getPictures() {
-        return pictures;
-    }
-
-    public void setPictures(Set<Media> pictures) {
-        this.pictures = pictures;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(username, user.username) &&
-                Objects.equals(password, user.password);
+        return id == user.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, password);
+        return Objects.hash(id);
     }
 
-    public Long getId() {
-        return id;
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", admin=" + admin +
+                ", version=" + version +
+                ", profile=" + profile +
+                ", recipes=" + recipes +
+                ", favorites=" + favorites +
+                '}';
     }
-
-
 }

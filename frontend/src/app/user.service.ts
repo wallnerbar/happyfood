@@ -4,6 +4,7 @@ import {map} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {Subject} from 'rxjs';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {User} from './api/user';
 
 @Injectable({
   providedIn: 'root'
@@ -44,11 +45,18 @@ export class UserService {
     }));
   }
 
-
-
   logout() {
     localStorage.removeItem(this.accessTokenLocalStorageKey);
     this.loggedInChange.next(false);
     this.router.navigate(['/login']);
   }
+
+  create(user: User) {
+    return this.http.post('/api/dto/authentication/users', user);
+  }
+
+  getAuth() {
+    return this.http.get('/api/dto/authentication/auth');
+  }
+
 }

@@ -12,23 +12,14 @@ export class ProfileService {
   constructor(private http: HttpClient) {
   }
 
-  getById(id: string) {
-    return this.http.get('/api/dto/profiles/' + id);
-  }
-
-  getAll() {
-    return this.http.get('api/profiles');
-  }
-
-  delete(profile) {
-    return this.http.delete('/api/profiles/' + profile.id);
+  getById(id: number) {
+    return this.http.get('/api/dto/users/' + id);
   }
 
   update(profile: Profile) {
-    return this.http.put('/api/dto/profiles' + profile.id, profile);
+    return this.http.put('/api/dto/users/' + profile.id, profile);
   }
+  getAll() {
 
-  create(profile: Profile) {
-    return this.http.post('/api/dto/profiles', profile);
   }
 }
