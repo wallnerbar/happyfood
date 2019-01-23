@@ -59,7 +59,7 @@
         <a class="nav-link" href="/profile-form">Einkaufsliste</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/profile-form">Logout</a>
+        <a class="nav-link" href="/logout">Logout</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -69,10 +69,13 @@
   </div>
 </nav>
 
-<form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+<form [formGroup]="profileForm" (ngSubmit)="saveUser()">
 
 <div class="profil">
-
+  <div class="row">
+    <label for="username">username:</label>
+    <input id="username" type="text" name="username" disabled="true" formControlName="username" class="form-control"/>
+  </div>
   <div class="row">
     <div class="col">
       <h3>First name:</h3>
@@ -88,6 +91,10 @@
     </div>
   </div>
   <br>
+  <div class="row">
+    <label for="dayOfBirth">dayOfBirth:</label>
+    <input id="dayOfBirth" type="date" name="dayOfBirth" data-date-format="yyyy-MM-dd" formControlName="dayOfBirth" class="form-control"/>
+  </div>
   <div class="form-group">
     <h3>Description:</h3>
     <textarea class="form-control" name="description" formControlName="description" rows="4" placeholder="Description"></textarea>
@@ -113,21 +120,16 @@
     </div>
   </div>
 <br>
-
-  <div class="row">
-    <div class="col">
-      <h1>Pictures:</h1>
-      <app-mediainput id="pictures" name="pictures" formControlName="pictures" accept="image/*"></app-mediainput>
-    </div>
+  <div>
+    <button type="submit" class="btn btn-dark" [disabled]="profileForm.invalid">Create</button>
+    <button class="btn btn-dark" [routerLink]="'/test-list'">Back</button>
+    <button type="submit" class="btn btn-dark" (click)="setShouldNavigateToList()" [disabled]="profileForm.invalid">
+      Save and Back
+    </button>
   </div>
-<br>
-  <button type="submit" class="btn btn-dark">Create</button>
-  <button class="btn btn-dark" [routerLink]="'/test-list'">Back</button>
-  <button class="btn btn-dark" (click)="setShouldNavigateToList()">
-    Save and Back
-  </button>
-  </div>
+</div>
 </form>
+
 
 </body>
 </html>

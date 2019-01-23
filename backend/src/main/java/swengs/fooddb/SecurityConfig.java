@@ -47,7 +47,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // allow all POST requests
                 .antMatchers(HttpMethod.POST, jwtConfig.getUri()).permitAll()
                 // must be an admin if trying to access admin area (authentication is also required here)
-                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/dto/admin/**").hasRole("ADMIN")
+                .antMatchers("/dto/authentication/users").permitAll()
                 // any other requests must be authenticated
                 .anyRequest().authenticated();
     }

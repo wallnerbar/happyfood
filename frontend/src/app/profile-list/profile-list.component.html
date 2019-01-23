@@ -61,7 +61,7 @@
         <a class="nav-link" href="/profile-form">Einkaufsliste</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/profile-form">Logout</a>
+        <a class="nav-link" href="/logout">Logout</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -73,27 +73,23 @@
 <div class="text_title">
   <h1>Profile</h1>
 </div>
+
 <div class="bs-example">
   <table class="table table-hover">
     <thead>
     <tr>
-      <th>Position</th>
-      <th>Vorname</th>
-      <th>Nachname</th>
-      <th>Geschlecht</th>
-      <th>Weitere Informationen</th>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Admin</th>
       <th>Aktion</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let profile of profiles">
-      <td>{{profile.id}}</td>
-      <td>{{profile.firstName}}</td>
-      <td>{{profile.lastName}}</td>
-      <td>{{profile.gender}}
-      <td>{{profile.description}}</td>
-      <td><button type="submit" class="btn btn-dark" [routerLink]="'/profile-form/' + profile.id">Edit</button>
-        <button type="submit" class="btn btn-dark" (click)="deleteProfile(profile)">Delete</button></td>
+    <tr *ngFor="let user of users">
+      <td>{{user.id}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.admin}}</td>
+      <td> <button type="submit" class="btn btn-dark" (click)="deleteUser(user)">Delete</button></td>
     </tr>
     </tbody>
   </table>

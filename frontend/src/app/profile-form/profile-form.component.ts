@@ -6,83 +6,60 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Profile} from '../api/profile';
 import {HttpClient} from '@angular/common/http';
+import {User} from '../api/user';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-profile-form',
   templateUrl: './profile-form.component.html',
-  styleUrls: ['./profile-form.component.scss']
+  styleUrls: ['./profile-form.component.scss'],
+  providers: [DatePipe]
 })
 export class ProfileFormComponent implements OnInit {
 
   profileForm;
   shouldNavigateToList: boolean;
   profileOptions;
+  user: User;
 
   constructor(private http: HttpClient, private profileService: ProfileService,
-              private route: ActivatedRoute, private router: Router) {
+              private route: ActivatedRoute, private router: Router,  private datePipe: DatePipe) {
   }
 
   ngOnInit() {
 
     this.profileForm = new FormGroup({
       'id': new FormControl(),
+      'username': new FormControl(),
       'firstName': new FormControl('', [Validators.required, Validators.minLength(2)]),
       'lastName': new FormControl(),
+      'dayOfBirth': new FormControl(),
       'gender': new FormControl(),
       'description': new FormControl(),
       'pictures': new FormControl(),
     });
 
     const data = this.route.snapshot.data;
-    this.profileOptions = data.profile;
-    /*const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.profileService.getById(id)
-        .subscribe((response) => {
-          this.profileForm.setValue(response);
-        });
-    } else {
-      this.profileForm.setValue();
-    }*/
+    this.user = data.user;
+
+    this.profileService.getById(this.user.id)
+      .subscribe((userProfile: any) => {
+        const profile = userProfile;
+        profile.dayOfBirth = this.datePipe.transform(profile.dayOfBirth, 'yyyy-MM-dd');
+        this.profileForm.setValue(profile);
+      });
   }
-/*
-  createProfile() {
+  saveUser() {
+    const user = this.profileForm.value;
+    this.profileService.update(user)
+      .subscribe((response) => {
+        alert('updated successfully');
+        this.navigateBack();
+      });
+  }
 
-    if (this.profile.id) {
-      this.http.put('/api/profiles/' + this.profile.id, this.profile)
-        .subscribe(() => {
-          alert('updated successfully');
-        });
-    } else {
-      this.http.post('/api/profiles', this.profile)
-        .subscribe(() => {
-          alert('created successfully');
-        });
-    }
-  }*/
-
-  saveProfile() {
-    const profile = this.profileForm.value;
-    if (profile.id) {
-      this.profileService.update(profile)
-        .subscribe((response) => {
-          alert('updated successfully');
-          this.profileForm.setValue(response);
-          if (this.shouldNavigateToList) {
-            this.navigateToList();
-          }
-        });
-    } else {
-      this.profileService.create(profile)
-        .subscribe((response: any) => {
-          alert('created successfully');
-          if (this.shouldNavigateToList) {
-            this.navigateToList();
-          } else {
-            this.router.navigate(['/profile-form', response.id]);
-          }
-        });
-    }
+  navigateBack() {
+    this.router.navigate(['/profile']);
   }
 
   navigateToList() {

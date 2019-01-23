@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -29,27 +30,23 @@ public class Profile {
 
     private String description;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date dayOfBirth;
+
     @Version
     @JsonIgnore
     private long version;
 
-    @OneToOne
+    @OneToOne(mappedBy = "profile")
     private User user;
-
-    @ManyToMany
-    @JoinTable(name = "profile_pictures",
-            joinColumns = @JoinColumn(name = "profile_id"),
-            inverseJoinColumns = @JoinColumn(name = "pictures_id")
-    )
-    private Set<Media> pictures = new HashSet<>();
 
     public Profile(){
     }
 
-    public Profile(String firstName, String lastName, String description) {
+    public Profile(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.description = description;
     }
 
     public long getId() {
@@ -92,12 +89,12 @@ public class Profile {
         this.description = description;
     }
 
-    public long getVersion() {
-        return version;
+    public Date getDayOfBirth() {
+        return dayOfBirth;
     }
 
-    public void setVersion(long version) {
-        this.version = version;
+    public void setDayOfBirth(Date dayOfBirth) {
+        this.dayOfBirth = dayOfBirth;
     }
 
     public User getUser() {
@@ -106,14 +103,6 @@ public class Profile {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public Set<Media> getPictures() {
-        return pictures;
-    }
-
-    public void setPictures(Set<Media> pictures) {
-        this.pictures = pictures;
     }
 
     @Override
@@ -135,11 +124,12 @@ public class Profile {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", gender=" + gender + '\'' +
+                ", gender=" + gender +
                 ", description='" + description + '\'' +
+                ", dayOfBirth=" + dayOfBirth +
                 ", version=" + version +
+                ", user=" + user +
                 '}';
     }
-
 }
 

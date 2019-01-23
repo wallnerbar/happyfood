@@ -1,12 +1,13 @@
 <form [formGroup]="recipeForm" (ngSubmit)="saveRecipe()">
   <label>
     Title:
-    <input type="text" name="title" formControlName="title"/>
+    <input type="text" name="title" formControlName="title"  class="form-control" required minlength="3"/>
     <div *ngIf="recipeForm.controls.title.invalid && (recipeForm.controls.title.dirty || recipeForm.controls.title.touched)"
          class="alert alert-danger">
       <div *ngIf="recipeForm.controls.title.errors.required">
-        Name is required.
+        Please add a Title
       </div>
+      <div (input)="minLength(3)"> Titel muss zumindest 3 Buchstaben haben</div>
     </div>
   </label>
 
@@ -14,7 +15,7 @@
 
   <label>
     Recipe Description:
-    <input type="text" name="recipeDescription" formControlName="recipeDescription"/>
+    <input type="text" name="recipeDescription" formControlName="recipeDescription" class="form-control"/>
   </label>
 
   <br>
@@ -53,16 +54,85 @@
     </div>
   </div>
   </label>
+
+
+  <br>
+
+  <label>
+    <div class="row">
+      <div class="col">
+        <label>Category</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="category" id="category1" formControlName="category" value="VEGAN">
+          <label class="form-check-label" for="category1">
+            Vegan
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="category" id="category2" formControlName="category" value="VEGETARISCH">
+          <label class="form-check-label" for="category2">
+            Vegetarisch
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="category" id="category3" formControlName="category" value="FLEISCH">
+          <label class="form-check-label" for="category3">
+            Fleisch
+          </label>
+        </div>
+      </div>
+    </div>
+  </label>
+
+  <br>
+
+  <label>
+    Menge:
+    <input type="Number" name="unit" formControlName="unit" min="0" class="form-control"/>
+  </label>
+
+  <br>
+
+  <label>
+    Einheit:
+    <select required formControlName="amount" id="amount" class="form-control">
+      <option name="amount" value="TL">TL (Teelöffel)</option>
+      <option name="amount" value="EL">EL (Esslöffel</option>
+      <option name="amount" value="PRISE">Prise</option>
+      <option name="amount" value="G">g (Gramm)</option>
+      <option name="amount" value="KG">kg (Kilogramm)</option>
+      <option name="amount" value="ML">ml (Milliliter)</option>
+      <option name="amount" value="Liter">l (Liter)</option>
+      <option name="amount" value="STK">Stück</option>
+      <option name="amount" value="SCHUSS">Schuss</option>
+
+
+
+    </select>
+  </label>
+
+  <br>
+<!--
+
+  <label>
+    Complexity
+    <select required formControlName="complexity" id="complexity">
+      <option name="complexity" value="EINFACH">Einfach</option>
+      <option name="complexity" value="MITTEL">Mittel</option>
+      <option name="complexity" value="SCHWER">Schwer</option>
+
+    </select>
+  </label>
+
 -->
   <br>
 
   <label>
     Cooking Time:
-    <input type="text" name="cookingTime" formControlName="cookingTime"/>
+    <input type="text" name="cookingTime" formControlName="cookingTime" placeholder="z.b. circa 15 Minuten" required minlength="2" class="form-control"/>
   </label>
 
   <br>
-
   <div class="row">
     <div class="col">
       <div class="form-check">
@@ -77,12 +147,14 @@
   <br>
   <br>
 
+<!--
   <div class="row">
     <div class="col">
       <h2>Bilder hochladen:</h2>
       <app-mediainput name="pictures" [formControlName]="pictures"></app-mediainput>
     </div>
   </div>
+-->
 
   <button type="submit">
     Create

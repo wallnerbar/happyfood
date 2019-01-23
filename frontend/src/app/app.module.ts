@@ -20,11 +20,14 @@ import { IngredientFormComponent } from './ingredient-form/ingredient-form.compo
 import { IngredientListComponent } from './ingredient-list/ingredient-list.component';
 import {MatTableModule} from '@angular/material/table';
 import { FavoriteListComponent } from './favorite-list/favorite-list.component';
+import { GrocerylistComponent } from './grocerylist/grocerylist.component';
+import { RegisterComponent } from './register/register.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ProfileSiteComponent } from './profile-site/profile-site.component';
 import { RecipeSiteComponent } from './recipe-site/recipe-site.component';
 import {NgbAlertModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import {SafeUrlPipe} from './pipes/safe-url.pipe';
+
 
 
 export function tokenGetter() {
@@ -46,9 +49,10 @@ export function tokenGetter() {
     IngredientListComponent,
     RecipeListComponent,
     FavoriteListComponent,
+    GrocerylistComponent,
+    RegisterComponent
     ProfileSiteComponent,
     RecipeSiteComponent,
-    ShoppingListComponent,
     SafeUrlPipe
   ],
   imports: [
@@ -57,6 +61,7 @@ export function tokenGetter() {
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     FileUploadModule,
     MatTableModule,

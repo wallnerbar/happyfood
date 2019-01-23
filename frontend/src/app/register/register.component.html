@@ -1,0 +1,67 @@
+<form [formGroup]="registerForm" (ngSubmit)="saveUser()">
+  <div class="row">
+    <div class="offset-lg-2 col-lg-8 p-2">
+      <label for="username"> <i class="fa fa-user prefix mr-2"></i>Benutzername</label>
+      <input id="username" type="text" name="username" formControlName="username" class="form-control"/>
+
+
+      <div *ngIf="registerForm.controls.username.invalid && (registerForm.controls.username.dirty || registerForm.controls.username.touched)"
+           class="alert alert-danger">
+        <div *ngIf="registerForm.controls.username.errors.required">
+          Benutzername muss angegeben werden.
+        </div>
+        <div *ngIf="registerForm.controls.username.errors.minlength">
+          Benutzername muss mindestens 4 Zeichen lang sein.
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="row">
+    <div class="offset-lg-2 col-lg-8 p-2">
+      <label for="password"><i class="fa fa-lock prefix mr-2"></i>Passwort</label>
+      <input id="password" type="password" name="password" formControlName="password" class="form-control"/>
+
+
+      <div *ngIf="registerForm.controls.password.invalid && (registerForm.controls.password.dirty || registerForm.controls.password.touched)"
+           class="alert alert-danger">
+        <div *ngIf="registerForm.controls.password.errors.required">
+          Passwort muss angegeben werden.
+        </div>
+        <div *ngIf="registerForm.controls.password.errors.minlength">
+          Passwort muss zumindest 6 Zeichen lang sein.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <div class="row">
+    <div class="offset-lg-2 col-lg-8 p-2">
+      <label for="password2"><i class="fa fa-lock prefix mr-2"></i>Passwort bestätigen</label>
+      <input id="password2" type="password" name="password2" formControlName="password2" class="form-control"/>
+
+      <div *ngIf="registerForm.controls.password2.invalid && (registerForm.controls.password2.dirty || registerForm.controls.password2.touched)"
+           class="alert alert-danger">
+        <div *ngIf="registerForm.controls.password2.errors.required">
+          Passwortbestätigung muss eingegeben werden.
+        </div>
+        <div *ngIf="registerForm.controls.password2.errors.mismatch">
+          Passwörter stimmen nicht überein.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+  <div class="text-center">
+    <button class="waves-light btn-register" mdbWavesEffect [disabled]="registerForm.invalid">Registrieren</button>
+  </div>
+</form>

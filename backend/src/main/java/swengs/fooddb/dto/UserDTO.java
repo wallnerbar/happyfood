@@ -1,26 +1,32 @@
 package swengs.fooddb.dto;
 
 import swengs.fooddb.model.Gender;
-import swengs.fooddb.model.Media;
 
-import java.util.Set;
+import java.util.Date;
 
-public class ProfileDTO {
-
-    private Long id;
-    //private String username;
+public class UserDTO {
+    private long id;
+    private String username;
     private String firstName;
     private String lastName;
+    private Date dayOfBirth;
     private Gender gender;
     private String description;
-    private Set<Media> media;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getFirstName() {
@@ -39,6 +45,14 @@ public class ProfileDTO {
         this.lastName = lastName;
     }
 
+    public Date getDayOfBirth() {
+        return dayOfBirth;
+    }
+
+    public void setDayOfBirth(Date dayOfBirth) {
+        this.dayOfBirth = dayOfBirth;
+    }
+
     public Gender getGender() {
         return gender;
     }
@@ -54,13 +68,4 @@ public class ProfileDTO {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public Set<Media> getMedia() {
-        return media;
-    }
-
-    public void setMedia(Set<Media> media) {
-        this.media = media;
-    }
 }
-

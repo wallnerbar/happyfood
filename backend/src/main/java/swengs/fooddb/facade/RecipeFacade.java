@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import swengs.fooddb.dto.RecipeDTO;
 import swengs.fooddb.model.Recipe;
 import swengs.fooddb.model.User;
-import swengs.fooddb.service.MediaService;
+import swengs.fooddb.service.AuthenticationService;
 import swengs.fooddb.service.RecipeService;
 import swengs.fooddb.service.UserService;
 
@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 public class RecipeFacade {
 
     @Autowired
-    private UserService userService;
+    private AuthenticationService authenticationService;
 
     @Autowired
     private RecipeService recipeService;
@@ -78,7 +78,7 @@ public class RecipeFacade {
 
     public List<RecipeDTO> getMyFavorites() {
         String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
-        User user = userService.findByUsername(username);
+        User user = authenticationService.findByName(username);
         Set<Recipe> recipes = user.getFavorites();
         return recipes.stream().map((r) -> {
             RecipeDTO dto = new RecipeDTO();

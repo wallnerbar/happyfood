@@ -10,9 +10,12 @@ import {RecipeListComponent} from './recipe-list/recipe-list.component';
 import {IngredientFormComponent} from './ingredient-form/ingredient-form.component';
 import {IngredientListComponent} from './ingredient-list/ingredient-list.component';
 import {FavoriteListComponent} from './favorite-list/favorite-list.component';
+import {GrocerylistComponent} from './grocerylist/grocerylist.component';
+import {LogoutComponent} from './logout/logout.component';
+import {AuthResolver} from './resolver/auth.resolver';
+import {RegisterComponent} from './register/register.component';
 import {RecipeSiteComponent} from './recipe-site/recipe-site.component';
 import {ProfileSiteComponent} from './profile-site/profile-site.component';
-import {ShoppingListComponent} from './shopping-list/shopping-list.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/profile-list', pathMatch: 'full'},
@@ -20,7 +23,10 @@ const routes: Routes = [
   {path: 'recipes/my-favorites', component: FavoriteListComponent},
   {path: 'test-list', component: TestListComponent, canActivate: [AuthGuard]},
   {path: 'profile-list', component: ProfileListComponent, canActivate: [AuthGuard]},
-  {path: 'profile-form', component: ProfileFormComponent, canActivate: [AuthGuard]},
+  {path: 'profile-form', component: ProfileFormComponent, canActivate: [AuthGuard],
+    resolve: {
+      user: AuthResolver,
+    } },
   {path: 'profile-form/:id', component: ProfileFormComponent, canActivate: [AuthGuard]},
   {path: 'recipe-form', component: RecipeFormComponent, canActivate: [AuthGuard]},
   {path: 'recipe-form/:id', component: RecipeFormComponent, canActivate: [AuthGuard]},
@@ -29,12 +35,14 @@ const routes: Routes = [
   {path: 'ingredient-form/:id', component: IngredientFormComponent, canActivate: [AuthGuard]},
   {path: 'ingredient-list', component: IngredientListComponent, canActivate: [AuthGuard]},
   {path: 'favorite-list', component: FavoriteListComponent, canActivate: [AuthGuard]},
+  {path: 'grocerylist', component: GrocerylistComponent, canActivate: [AuthGuard]},
+  {path: 'login', component: LoginComponent},
+  {path: 'logout', component: LogoutComponent},
+  {path: 'register', component: RegisterComponent},
   {path: 'recipe-site/:id', component: RecipeSiteComponent, canActivate: [AuthGuard]},
   {path: 'recipe-site', component: RecipeSiteComponent, canActivate: [AuthGuard]},
   {path: 'profile-site', component: ProfileSiteComponent, canActivate: [AuthGuard]},
   {path: 'profile-site/:id', component: ProfileSiteComponent, canActivate: [AuthGuard]},
-  {path: 'shopping-list', component: ShoppingListComponent, canActivate: [AuthGuard]},
-  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

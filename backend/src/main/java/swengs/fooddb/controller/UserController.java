@@ -2,8 +2,8 @@ package swengs.fooddb.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import swengs.fooddb.dto.ProfileDTO;
-import swengs.fooddb.facade.ProfileFacade;
+import swengs.fooddb.dto.UserDTO;
+import swengs.fooddb.facade.UserFacade;
 
 import javax.validation.Valid;
 
@@ -11,20 +11,15 @@ import javax.validation.Valid;
 public class UserController {
 
     @Autowired
-    private ProfileFacade profileFacade;
+    private UserFacade userFacade;
 
-    @GetMapping("/dto/profiles/{id}")
-    ProfileDTO getById(@PathVariable Long id) {
-        return profileFacade.getById(id);
+    @GetMapping("/dto/users/{id}")
+    UserDTO getById(@PathVariable Long id) {
+        return userFacade.getById(id);
     }
 
-    @PostMapping("/dto/profiles")
-    ProfileDTO create(@RequestBody @Valid ProfileDTO dto) {
-        return profileFacade.create(dto);
-    }
-
-    @PutMapping("/dto/profiles/{id}")
-    ProfileDTO update(@RequestBody @Valid ProfileDTO dto, @PathVariable Long id) {
-        return profileFacade.update(id, dto);
+    @PutMapping("/dto/users/{id}")
+    UserDTO update(@RequestBody @Valid UserDTO dto, @PathVariable Long id) {
+        return userFacade.update(id, dto);
     }
 }

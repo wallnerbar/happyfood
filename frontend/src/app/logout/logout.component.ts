@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-logout',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogoutComponent implements OnInit {
 
-  constructor() { }
+  isLoggedIn: boolean;
+
+  constructor(private userService: UserService) {
+  }
 
   ngOnInit() {
+    this.isLoggedIn = this.userService.isLoggedIn;
+    this.userService.loggedInChange.subscribe((isLoggedIn) => {
+      this.isLoggedIn = isLoggedIn;
+    });
+  }
+
+  logout() {
+    this.userService.logout();
   }
 
 }

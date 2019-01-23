@@ -10,9 +10,13 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import swengs.fooddb.model.Ingredient;
+import swengs.fooddb.model.IngredientRepository;
 import swengs.fooddb.model.UserRepository;
 
 import javax.annotation.PostConstruct;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service("userDetailsService")   // It has to be annotated with @Service.
@@ -23,6 +27,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private IngredientRepository ingredientRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -60,6 +67,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             tester.setPassword(encoder.encode("12345"));
             userRepository.save(tester);
         }
+        if(ingredientRepository.count() == 0){
+            String[] zutatenNamenListe = {"Ei","Tomate","Karotte","Salat","Milch"}; //diese Liste erweitern um merh Zutaten zu haben
+            for(String zutat: zutatenNamenListe){
+                Ingredient ing = new Ingredient();
+                ing.setIngredientName(zutat);
+                ingredientRepository.save(ing);
             }
+
+        }
+    }
 
 }
