@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {animate, keyframes, style, transition, trigger} from '@angular/animations';
-import {FormsModule} from '@angular/forms';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {HttpClient} from '@angular/common/http';
+import {ActivatedRoute, Router} from '@angular/router';
+import {User} from '../api/user';
+import {GroceryService} from '../grocery.service';
+import {Grocery} from '../api/grocery';
 
 @Component({
   selector: 'app-grocerylist',
@@ -27,39 +30,53 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
   ]
 })
-export class GrocerylistComponent {
-  todoArray = [];
-  todo;
-  // todoForm: new FormGroup()
+export class GrocerylistComponent implements OnInit {
+  user: User;
+  groceryList: Array<Grocery>;
 
+
+  constructor(private http: HttpClient,
+              private route: ActivatedRoute,
+              private router: Router,
+              private groceryService: GroceryService) {
+  }
+
+  ngOnInit(): void {
+    const data = this.route.snapshot.data;
+    this.user = data.user;
+
+    if (this.user) {
+      this.groceryService.getAllByUser(this.user.id)
+        .subscribe((response: any) => {
+          this.groceryList = response;
+        });
+    }
+  }
 
   addTodo(value) {
     if (value !== '' ) {
-      this.todoArray.push(value);
-      // console.log(this.todos)
-    } else {
-      alert('Field required **');
-    }
-
-  }
-
-  /*delete item*/
-  deleteItem(todo) {
-    for (let i = 0 ; i <= this.todoArray.length ; i++) {
-      if (todo === this.todoArray[i]){
-        this.todoArray.splice(i, 1);
+      const data: Grocery = {
+        id: null,
+        user: this.user.id,
+        grocery: value
       }
-    }
-  }
-
-// submit Form
-  todoSubmit(value: any) {
-    if (value !== '') {
-      this.todoArray.push(value.todo);
-      // this.todoForm.reset()
+      this.groceryService.save(data)
+        .subscribe(() => {
+          this.ngOnInit();
+        });
     } else {
       alert('Field required **');
     }
-
   }
+
+  deleteItem(todo) {
+    this.groceryService.delete(todo.id)
+      .subscribe(() => {
+        this.ngOnInit();
+      });
+  }
+
+  todoSubmit(value: any) {
+  }
+
 }
