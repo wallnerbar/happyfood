@@ -11,6 +11,7 @@ import {IngredientService} from '../ingredient.service';
 export class IngredientListComponent implements OnInit {
 
   ingredients: Array<Ingredient>;
+  ingredientArray;
 
   constructor(private router: Router, private ingredientService: IngredientService) {
   }
@@ -28,6 +29,17 @@ export class IngredientListComponent implements OnInit {
       .subscribe(() => {
         this.ngOnInit();
       });
+  }
+
+  filterIngredients(filterValue) {
+    if (filterValue) {
+      this.ingredients = this.ingredients.filter((ingredient) => {
+        return ingredient.ingredientName.toLowerCase().indexOf(filterValue.toLowerCase()) !== -1;
+      });
+    } else {
+      this.ingredients = this.ingredients;
+    }
+
   }
 
 }

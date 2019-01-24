@@ -35,7 +35,10 @@ const routes: Routes = [
   {path: 'ingredient-form/:id', component: IngredientFormComponent, canActivate: [AuthGuard]},
   {path: 'ingredient-list', component: IngredientListComponent, canActivate: [AuthGuard]},
   {path: 'favorite-list', component: FavoriteListComponent, canActivate: [AuthGuard]},
-  {path: 'grocerylist', component: GrocerylistComponent, canActivate: [AuthGuard]},
+  {path: 'grocerylist', component: GrocerylistComponent, canActivate: [AuthGuard],
+    resolve: {
+      user: AuthResolver,
+    } },
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'register', component: RegisterComponent},

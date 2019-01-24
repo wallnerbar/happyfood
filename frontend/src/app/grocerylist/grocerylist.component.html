@@ -10,7 +10,7 @@
     </div>
     <div class="data">
       <ul class="list-unstyled">
-        <li [@moveInLeft]  *ngFor="let todo of todoArray">{{todo}} <i (click)="deleteItem(todo)" class="material-icons">delete</i></li>
+        <li [@moveInLeft]  *ngFor="let todo of groceryList">{{todo.grocery}} <i (click)="deleteItem(todo)" class="material-icons">delete</i></li>
 
       </ul>
     </div>
