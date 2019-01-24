@@ -66,6 +66,11 @@
 
 <div class="button_style">
   <div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <button class="btn btn-dark" type="button" (click)="show('all')">Alle</button>
+    <button class="btn btn-dark" type="button" (click)="show('EINFACH')">Leicht</button>
+    <button class="btn btn-dark" type="button" (click)="show('MITTEL')">Mittel</button>
+    <button class="btn btn-dark" type="button" (click)="show('SCHWER')">Schwer</button>
+<!--
     <label class="btn btn-dark">
       <input type="radio" name="options" id="option1" autocomplete="off" (click)="show('all')"> Alle
     </label>
@@ -78,6 +83,7 @@
     <label class="btn btn-dark">
       <input type="radio" name="options" id="option4" autocomplete="off" (click)="show('SCHWER')"> Schwer
     </label>
+-->
   </div>
 </div>
 
@@ -89,7 +95,7 @@
 
       <div class="card-content" *ngFor="let recipe of showRecipes">
         <div class="card-img">
-          <img src="https://placeimg.com/380/230/nature" alt="">
+          <img src="https://cdn.pixabay.com/photo/2017/09/16/19/21/salad-2756467_1280.jpg" alt="" style="width:380px;height:230px;">
           <span><h4>{{recipe.complexity}}</h4></span>
         </div>
         <div class="card-desc">
