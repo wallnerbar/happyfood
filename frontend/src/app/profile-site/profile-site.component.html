@@ -10,7 +10,7 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/test-list">Happy Food</a>
+  <a class="navbar-brand" href="/test-list"><i class="fa fa-fw fa-home"></i>Happy Food</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -19,7 +19,7 @@
     <ul class="navbar-nav mr-auto">
       <div class="dropdown">
         <li class="nav-item">
-          <a class="nav-link">Profil</a>
+          <a class="nav-link"><i class="fa fa-fw fa-user"></i>Profil</a>
           <div class="dropdown-content">
             <a href="/profile-site">Mein Profil</a>
             <a href="/profile-form">Profil bearbeiten</a>
@@ -28,7 +28,7 @@
       </div>
       <div class="dropdown">
         <li class="nav-item">
-          <a class="nav-link">Rezepte</a>
+          <a class="nav-link"><i class='fas fa-leaf'></i> Rezepte</a>
           <div class="dropdown-content">
             <a href="/recipe-list">Alle Rezepte</a>
             <a href="/favorite-list">Meine Favoriten</a>
@@ -38,7 +38,7 @@
       </div>
       <div class="dropdown">
         <li class="nav-item">
-          <a class="nav-link">Zutaten</a>
+          <a class="nav-link"><i class='fas fa-apple-alt'></i> Zutaten</a>
           <div class="dropdown-content">
             <a href="/ingredient-list">Zutatenliste</a>
             <a href="/ingredient-form">Zutat erstellen</a>
@@ -46,15 +46,13 @@
         </li>
       </div>
       <li class="nav-item">
-        <a class="nav-link" href="/grocerylist">Einkaufsliste</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/profile-form">Logout</a>
+        <a class="nav-link" href="/grocerylist"><i class='fas fa-clipboard-list'></i> Einkaufsliste</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <div class="navbar-nav mr-auto">
+        <a class="nav-link" href="/logout"><i class='fas fa-sign-in-alt'></i> Logout</a>
+      </div>
     </form>
   </div>
 </nav>
@@ -80,8 +78,8 @@
   </div>
 </div>
 <div class="recipe_style_button">
-  <button type="submit" class="btn btn-dark" [routerLink]="'/recipe-form/' + recipe.id">Edit</button>
-  <button type="submit" class="btn btn-dark" [routerLink]="'/recipe-list'">Back</button>
+  <button class="btn btn-dark" [routerLink]="'/profile-form/' + recipe.id">Edit</button>
+  <button type="submit" class="btn btn-dark" [routerLink]="'/test-list'">Back</button>
 </div>
 
 

@@ -1,3 +1,8 @@
+
+<body>
+<div></div>
+<br>
+
 <form [formGroup]="registerForm" (ngSubmit)="saveUser()">
   <div class="row">
     <div class="offset-lg-2 col-lg-8 p-2">
@@ -59,10 +64,15 @@
   </div>
 
   <div class="text-center">
-    <button class="waves-light btn-register" mdbWavesEffect [disabled]="registerForm.invalid">Registrieren</button>
+    <button class="waves-light btn-register" mdbWavesEffect [disabled]="registerForm.invalid"  >Registrieren</button>
+  </div>
+  <div>
+    <button class="waves-light btn-register" [routerLink]="['/login']">Zurück zum Login</button>
   </div>
 </form>
+
+
 <br>
-<div>
-<a href="/login">Zurück zum Login</a>
-</div>
+<div></div>
+</body>
+
