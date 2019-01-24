@@ -36,6 +36,8 @@ export class RecipeListComponent implements OnInit {
     } else {
       this.showRecipes = this.recipes.filter(recipe => recipe.complexity === input);
     }
+    console.log(this.showRecipes);
+    this.router.navigate(['/recipe-list']);
   }
 
 
