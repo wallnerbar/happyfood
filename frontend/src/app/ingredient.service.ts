@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Ingredient} from './api/ingredient';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,9 @@ export class IngredientService {
   }
 
   getAll() {
-    return this.http.get('/api/ingredients');
+    return this.http.get('/api/ingredients').pipe(map((response: any) => {
+      return response._embedded.ingredients;
+    }));
   }
 
   delete(ingredient: Ingredient) {

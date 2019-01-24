@@ -24,11 +24,16 @@ public class IngredientFacade {
     private void mapEntityToDto(Ingredient entity, IngredientDTO dto) {
         dto.setId(entity.getId());
         dto.setIngredientName(entity.getIngredientName());
+        dto.setAmount(entity.getAmount());
+        dto.setUnit(entity.getUnit());
     }
 
     void mapDtoToEntity(IngredientDTO dto, Ingredient entity) {
         entity.setIngredientName(dto.getIngredientName());
+        entity.setAmount(dto.getAmount());
+        entity.setUnit(dto.getUnit());
     }
+
     public IngredientDTO create(IngredientDTO dto) {
         Ingredient entity = ingredientService.getIngredients(new Ingredient());
         mapDtoToEntity(dto, entity);

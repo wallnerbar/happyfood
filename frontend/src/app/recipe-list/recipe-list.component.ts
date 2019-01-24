@@ -3,6 +3,8 @@ import {Router} from '@angular/router';
 import {RecipeService} from '../recipe.service';
 import {Recipe} from '../api/recipe';
 import {Profile} from '../api/profile';
+import {Ingredient} from '../api/ingredient';
+import {IngredientService} from '../ingredient.service';
 
 @Component({
   selector: 'app-recipe-list',

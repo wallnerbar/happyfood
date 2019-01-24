@@ -50,7 +50,7 @@ export function tokenGetter() {
     RecipeListComponent,
     FavoriteListComponent,
     GrocerylistComponent,
-    RegisterComponent
+    RegisterComponent,
     ProfileSiteComponent,
     RecipeSiteComponent,
     SafeUrlPipe

@@ -1,33 +1,154 @@
-<form [formGroup]="recipeForm" (ngSubmit)="saveRecipe()">
-  <label>
-    Title:
-    <input type="text" name="title" formControlName="title"  class="form-control" required minlength="3"/>
-    <div *ngIf="recipeForm.controls.title.invalid && (recipeForm.controls.title.dirty || recipeForm.controls.title.touched)"
-         class="alert alert-danger">
-      <div *ngIf="recipeForm.controls.title.errors.required">
-        Please add a Title
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/test-list">Happy Food</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <div class="dropdown">
+        <li class="nav-item">
+          <a class="nav-link">Profil</a>
+          <div class="dropdown-content">
+            <a href="#">Mein Profil</a>
+            <a href="/profile-form">Profil bearbeiten</a>
+          </div>
+        </li>
       </div>
-      <div (input)="minLength(3)"> Titel muss zumindest 3 Buchstaben haben</div>
+      <div class="dropdown">
+        <li class="nav-item">
+          <a class="nav-link">Rezepte</a>
+          <div class="dropdown-content">
+            <a href="/recipe-list">Alle Rezepte</a>
+            <a href="/favorite-list">Meine Favoriten</a>
+            <a href="/recipe-form">Rezept erstellen</a>
+          </div>
+        </li>
+      </div>
+      <div class="dropdown">
+        <li class="nav-item">
+          <a class="nav-link">Zutaten</a>
+          <div class="dropdown-content">
+            <a href="/ingredient-list">Zutatenliste</a>
+            <a href="/ingredient-form">Zutat erstellen</a>
+          </div>
+        </li>
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" href="/profile-form">Einkaufsliste</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/profile-form">Logout</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<form [formGroup]="recipeForm" (ngSubmit)="saveRecipe()">
+  <div class="recipe">
+    <div class="row">
+      <div class="col">
+        <h3>Title:</h3>
+        <label>
+          <input type="text" name="title" formControlName="title"  class="form-control" required minlength="3" placeholder="Title"/>
+        </label>
+            <div *ngIf="recipeForm.controls.title.invalid && (recipeForm.controls.title.dirty || recipeForm.controls.title.touched)"
+                 class="alert alert-danger">
+                <div *ngIf="recipeForm.controls.title.errors.required">
+                  Please add a Title
+                </div>
+              <div (input)="minLength(3)"> (Title needs at least 3 letters)</div>
+            </div>
+      </div>
     </div>
-  </label>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <h3>Description:</h3>
+            <textarea class="form-control" name="recipeDescription" formControlName="recipeDescription" rows="4" placeholder="Description"></textarea>
+        </div>
+      </div>
 
-  <br>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h3>Ingredients:</h3>
+        <label>
+          <ngx-select id="ingredients" [items]="ingredientOptions" name="ingredients" [multiple]="true"
+                      [placeholder]="'Select ingredients'" formControlName="ingredients" optionTextField="ingredientName">
+            <ng-template ngx-select-option let-option let-text="text">
+              {{option.data.unit}} {{option.data.amount}} {{option.data.ingredientName}}
+            </ng-template>
+          </ngx-select>
+        </label>
+      </div>
+      <div class="col">
+        <h3>Complexity:</h3>
+        <label>
+          <select required formControlName="complexity" id="complexity">
+            <option name="complexity" value="EINFACH">Einfach</option>
+            <option name="complexity" value="MITTEL">Mittel</option>
+            <option name="complexity" value="SCHWER">Schwer</option>
+          </select>
+        </label>
+      </div>
+      <div class="col">
+        <h3>Category:</h3>
+          <label>
+            <select required formControlName="category" id="category">
+              <option name="category" value="VEGAN">Vegan</option>
+              <option name="category" value="VEGEATRISCH">Vegetarisch</option>
+              <option name="category" value="FLEISCH">Fleisch</option>
+            </select>
+          </label>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <h3>Cooking Time:</h3>
+            <label>
+              <input type="text" name="cookingTime" formControlName="cookingTime" placeholder="z.b. circa 15 Minuten" required minlength="2" class="form-control"/>
+            </label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="favoriteRecipe" id="exampleCheckbox" formControlName="favoriteRecipe" [value]="true">
+          <label class="form-check-label" for="exampleCheckbox">
+            Favorite Recipe
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="recipe">
+    <button type="submit" class="btn btn-dark">Create</button>
+    <button class="btn btn-dark" [routerLink]="'/recipe-list'">Back</button>
+    <button type="submit" class="btn btn-dark" (click)="setShouldNavigateToList()">
+      Save and Back
+    </button>
+  </div>
+</form>
+</body>
+</html>
 
-  <label>
-    Recipe Description:
-    <input type="text" name="recipeDescription" formControlName="recipeDescription" class="form-control"/>
-  </label>
 
-  <br>
-  <label>
-    Complexity
-    <select required formControlName="complexity" id="complexity">
-      <option name="complexity" value="EINFACH">Einfach</option>
-      <option name="complexity" value="MITTEL">Mittel</option>
-      <option name="complexity" value="SCHWER">Schwer</option>
-
-    </select>
-  </label>
 <!--
   <label>
   <div class="row">
@@ -125,27 +246,6 @@
   </label>
 
 -->
-  <br>
-
-  <label>
-    Cooking Time:
-    <input type="text" name="cookingTime" formControlName="cookingTime" placeholder="z.b. circa 15 Minuten" required minlength="2" class="form-control"/>
-  </label>
-
-  <br>
-  <div class="row">
-    <div class="col">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="favoriteRecipe" id="exampleCheckbox" formControlName="favoriteRecipe" [value]="true">
-        <label class="form-check-label" for="exampleCheckbox">
-          Favorite Recipe
-        </label>
-      </div>
-    </div>
-  </div>
-
-  <br>
-  <br>
 
 <!--
   <div class="row">
@@ -155,12 +255,6 @@
     </div>
   </div>
 -->
-
-  <button type="submit">
-    Create
-  </button>
-
-</form>
 
 
 

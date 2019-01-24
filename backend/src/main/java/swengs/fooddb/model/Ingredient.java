@@ -22,6 +22,11 @@ public class Ingredient {
 
     private String ingredientName;
 
+    @Enumerated(EnumType.STRING)
+    private Amount amount;
+
+    private int unit;
+
     @Version
     @JsonIgnore
     private long version;
@@ -36,8 +41,9 @@ public class Ingredient {
     public Ingredient() {
     }
 
-    public Ingredient(String ingredientName) {
+    public Ingredient(String ingredientName, int unit) {
         this.ingredientName = ingredientName;
+        this.unit = unit;
     }
 
     public long getId() {
@@ -64,6 +70,22 @@ public class Ingredient {
         this.recipes = recipes;
     }
 
+    public Amount getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Amount amount) {
+        this.amount = amount;
+    }
+
+    public int getUnit() {
+        return unit;
+    }
+
+    public void setUnit(int unit) {
+        this.unit = unit;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -82,7 +104,10 @@ public class Ingredient {
         return "Ingredient{" +
                 "id=" + id +
                 ", ingredientName='" + ingredientName + '\'' +
+                ", amount=" + amount +
+                ", unit=" + unit +
                 ", version=" + version +
+                ", recipes=" + recipes +
                 '}';
     }
 }

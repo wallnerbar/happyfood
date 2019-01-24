@@ -18,8 +18,8 @@ export class IngredientListComponent implements OnInit {
   ngOnInit() {
 
     this.ingredientService.getAll()
-      .subscribe((response: any) => {
-        this.ingredients = response._embedded.ingredients;
+      .subscribe((response) => {
+        this.ingredients = response;
       });
   }
 

@@ -29,11 +29,6 @@ public class Recipe {
     @Enumerated(EnumType.STRING)
     private CategoryType category;
 
-    private int unit;
-
-    @Enumerated(EnumType.STRING)
-    private Amount amount;
-
     private boolean favoriteRecipe = true;
 
     @Version
@@ -71,11 +66,10 @@ public class Recipe {
     public Recipe() {
     }
 
-    public Recipe(String title, String recipeDescription, String cookingTime, int unit) {
+    public Recipe(String title, String recipeDescription, String cookingTime) {
         this.title = title;
         this.recipeDescription = recipeDescription;
         this.cookingTime = cookingTime;
-        this.unit = unit;
     }
 
     public long getId() {
@@ -126,14 +120,6 @@ public class Recipe {
         this.category = category;
     }
 
-    public Amount getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Amount amount) {
-        this.amount = amount;
-    }
-
     public Set<Ingredient> getIngredients() {
         return ingredients;
     }
@@ -166,14 +152,6 @@ public class Recipe {
         this.pictures = pictures;
     }
 
-    public int getUnit() {
-        return unit;
-    }
-
-    public void setUnit(int unit) {
-        this.unit = unit;
-    }
-
     public boolean isFavoriteRecipe() {
         return favoriteRecipe;
     }
@@ -204,8 +182,6 @@ public class Recipe {
                 ", complexity=" + complexity +
                 ", cookingTime='" + cookingTime + '\'' +
                 ", category=" + category +
-                ", unit=" + unit +
-                ", amount=" + amount +
                 ", version=" + version +
                 '}';
     }

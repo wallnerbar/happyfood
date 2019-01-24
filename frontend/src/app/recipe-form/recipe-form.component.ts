@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {RecipeService} from '../recipe.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {IngredientService} from '../ingredient.service';
 
 
 @Component({
@@ -14,10 +15,11 @@ export class RecipeFormComponent implements OnInit {
 
   recipeForm;
   shouldNavigateToList: boolean;
-  recipeOptions;
+  ingredientOptions;
 
   constructor(private http: HttpClient, private recipeService: RecipeService,
-              private route: ActivatedRoute, private router: Router) {
+              private route: ActivatedRoute, private router: Router,
+              private ingredientService: IngredientService) {
   }
 
   ngOnInit() {
@@ -29,10 +31,10 @@ export class RecipeFormComponent implements OnInit {
       'complexity': new FormControl(),
       'cookingTime': new FormControl(),
       'category': new FormControl(),
-      'unit': new FormControl(),
       'amount': new FormControl(),
+      'unit': new FormControl(),
       'favoriteRecipe': new FormControl(),
-      'pictures': new FormControl(),
+      'ingredients': new FormControl(),
     });
 
     /*const data = this.route.snapshot.data;
@@ -46,6 +48,11 @@ export class RecipeFormComponent implements OnInit {
           this.recipeForm.setValue(response);
         });
     }
+
+    this.ingredientService.getAll()
+      .subscribe((ingredients: any) => {
+        this.ingredientOptions = ingredients;
+      });
 
     this.recipeForm.controls.favoriteRecipe.valueChanges
       .subscribe((newValue) => {

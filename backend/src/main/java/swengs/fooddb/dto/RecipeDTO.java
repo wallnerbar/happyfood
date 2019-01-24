@@ -2,9 +2,9 @@ package swengs.fooddb.dto;
 
 import swengs.fooddb.model.Complexity;
 import swengs.fooddb.model.CategoryType;
-import swengs.fooddb.model.Amount;
 import swengs.fooddb.model.Media;
 
+import java.util.List;
 import java.util.Set;
 
 public class RecipeDTO {
@@ -15,10 +15,9 @@ public class RecipeDTO {
     private Complexity complexity;
     private String cookingTime;
     private CategoryType category;
-    private int unit;
-    private Amount amount;
     private Set<Media> media;
     private boolean favoriteRecipe = true;
+    private Set<Long> ingredients;
 
     public long getId() {
         return id;
@@ -68,14 +67,6 @@ public class RecipeDTO {
         this.category = category;
     }
 
-    public Amount getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Amount amount) {
-        this.amount = amount;
-    }
-
     public Set<Media> getMedia() {
         return media;
     }
@@ -84,19 +75,19 @@ public class RecipeDTO {
         this.media = media;
     }
 
-    public int getUnit() {
-        return unit;
-    }
-
-    public void setUnit(int unit) {
-        this.unit = unit;
-    }
-
     public boolean isFavoriteRecipe() {
         return favoriteRecipe;
     }
 
     public void setFavoriteRecipe(boolean favoriteRecipe) {
         this.favoriteRecipe = favoriteRecipe;
+    }
+
+    public Set<Long> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Long> ingredients) {
+        this.ingredients = ingredients;
     }
 }

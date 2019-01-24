@@ -73,15 +73,36 @@
   <div class="row">
     <div class="col">
       <h3>Ingredient Name:</h3>
+      <br>
       <label>
         <input class="form-control form-control" type="text" name="ingredientName" formControlName="ingredientName" placeholder="Ingredient">
+      </label>
+      <br>
+      <label>
+        Menge:
+        <input type="Number" name="unit" formControlName="unit" min="0" class="form-control"/>
+      </label>
+      <br>
+      <label>
+        Einheit:
+        <select required formControlName="amount" id="amount" class="form-control">
+          <option name="amount" value="TL">TL (Teelöffel)</option>
+          <option name="amount" value="EL">EL (Esslöffel</option>
+          <option name="amount" value="PRISE">Prise</option>
+          <option name="amount" value="G">g (Gramm)</option>
+          <option name="amount" value="KG">kg (Kilogramm)</option>
+          <option name="amount" value="ML">ml (Milliliter)</option>
+          <option name="amount" value="Liter">l (Liter)</option>
+          <option name="amount" value="STK">Stück</option>
+          <option name="amount" value="SCHUSS">Schuss</option>
+        </select>
       </label>
     </div>
   </div>
 
     <br>
     <button type="submit" class="btn btn-dark">Create</button>
-    <button type="submit" class="btn btn-dark" [routerLink]="'/ingredient-list'">Back</button>
+    <button class="btn btn-dark" [routerLink]="'/ingredient-list'">Back</button>
     <button type="submit" class="btn btn-dark" (click)="setShouldNavigateToList()">
       Save and Back
     </button>

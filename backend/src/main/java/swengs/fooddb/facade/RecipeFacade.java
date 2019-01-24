@@ -7,9 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import swengs.fooddb.dto.RecipeDTO;
 import swengs.fooddb.model.Recipe;
 import swengs.fooddb.model.User;
-import swengs.fooddb.service.AuthenticationService;
-import swengs.fooddb.service.RecipeService;
-import swengs.fooddb.service.UserService;
+import swengs.fooddb.service.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,6 +27,9 @@ public class RecipeFacade {
     @Autowired
     private MediaService mediaService;
 
+    @Autowired
+    private IngredientService ingredientService;
+
     public RecipeDTO getById(Long id) {
         Recipe entity = recipeService.findById(id).get();
         RecipeDTO dto = new RecipeDTO();
@@ -43,10 +44,9 @@ public class RecipeFacade {
         dto.setComplexity(entity.getComplexity());
         dto.setCookingTime(entity.getCookingTime());
         dto.setCategory(entity.getCategory());
-        dto.setUnit(entity.getUnit());
-        dto.setAmount(entity.getAmount());
         dto.setFavoriteRecipe(entity.isFavoriteRecipe());
         dto.setMedia(entity.getPictures());
+        dto.setIngredients(entity.getIngredients().stream().map((m) -> m.getId()).collect(Collectors.toSet()));
     }
 
     void mapDtoToEntity(RecipeDTO dto, Recipe entity) {
@@ -55,11 +55,9 @@ public class RecipeFacade {
         entity.setComplexity(dto.getComplexity());
         entity.setCookingTime(dto.getCookingTime());
         entity.setCategory(dto.getCategory());
-        entity.setUnit(dto.getUnit());
-        entity.setAmount(dto.getAmount());
         entity.setFavoriteRecipe(dto.isFavoriteRecipe());
         entity.setPictures(dto.getMedia());
-
+        entity.setIngredients(ingredientService.getIngredientSet(dto.getIngredients()));
     }
 
     public RecipeDTO create(RecipeDTO dto) {

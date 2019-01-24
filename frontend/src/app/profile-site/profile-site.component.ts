@@ -18,13 +18,13 @@ export class ProfileSiteComponent implements OnInit {
               private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
+    /*const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.profileService.getById(id)
         .subscribe((response: any) => {
           this.profile = response;
         });
-    }
+    }*/
   }
 
 }

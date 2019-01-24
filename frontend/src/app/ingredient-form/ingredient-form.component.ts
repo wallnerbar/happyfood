@@ -23,6 +23,8 @@ export class IngredientFormComponent implements OnInit {
     this.ingredientForm = new FormGroup ( {
       'id': new FormControl(),
       'ingredientName': new FormControl(),
+      'amount': new FormControl(),
+      'unit': new FormControl(),
       }
     );
 

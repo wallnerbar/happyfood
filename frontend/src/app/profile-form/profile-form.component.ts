@@ -36,7 +36,6 @@ export class ProfileFormComponent implements OnInit {
       'dayOfBirth': new FormControl(),
       'gender': new FormControl(),
       'description': new FormControl(),
-      'pictures': new FormControl(),
     });
 
     const data = this.route.snapshot.data;

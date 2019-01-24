@@ -79,6 +79,8 @@
     <tr>
       <th>Position</th>
       <th>Ingredient</th>
+      <th>Unit</th>
+      <th>Amount</th>
       <th>Action</th>
     </tr>
     </thead>
@@ -86,6 +88,8 @@
     <tr *ngFor="let ingredient of ingredients">
       <td>{{ingredient.id}}</td>
       <td>{{ingredient.ingredientName}}</td>
+      <td>{{ingredient.amount}}</td>
+      <td>{{ingredient.unit}}</td>
       <td><button type="submit" class="btn btn-dark" [routerLink]="'/ingredient-form/' + ingredient.id">Edit</button>
           <button type="submit" class="btn btn-dark" (click)="deleteIngredient(ingredient)">Delete</button></td>
     </tr>
