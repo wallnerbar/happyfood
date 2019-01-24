@@ -53,13 +53,6 @@ export class RecipeFormComponent implements OnInit {
       .subscribe((ingredients: any) => {
         this.ingredientOptions = ingredients;
       });
-
-    this.recipeForm.controls.favoriteRecipe.valueChanges
-      .subscribe((newValue) => {
-        if (newValue === true) {
-          this.router.navigate(['/favorite-list']);
-        }
-      });
     /*
     this.actorForm.controls.rating.valueChanges
       .subscribe((newValue) => {
